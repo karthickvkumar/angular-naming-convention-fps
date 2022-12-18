@@ -1,0 +1,15 @@
+.form-container {
+    padding: 20px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+input[disabled] {
+    background-color: #fff;
+}
+
+.btn--blue {
+    margin-left: 10px;
+}

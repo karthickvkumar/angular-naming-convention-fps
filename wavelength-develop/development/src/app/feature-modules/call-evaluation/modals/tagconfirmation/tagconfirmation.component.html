@@ -1,0 +1,20 @@
+<div>
+    <p>Choose the tag for audit</p>
+    <form form #prioritycheck="ngForm" autocomplete="false">
+        <ng-select [clearable]="false" required [items]="objlstPriority" (change)="onPriorityChange()"
+            [dropdownPosition]="'bottom'" [multiple]="false" [loading]="objLoadinTags" bindLabel="description"
+            bindValue="severity" [(ngModel)]="objSelectedPriority" placeholder="Severity" name="priority">
+        </ng-select>
+        <ng-select [clearable]="false" required [items]="objlstAuditTags" [dropdownPosition]="'bottom'"
+            [multiple]="false" bindLabel="name" [loading]="objLoadinTags" bindValue="id"
+            [(ngModel)]="objSelectedAuditTags" placeholder="Evaluation Tag" name="audittags">
+        </ng-select>
+        <mat-form-field *ngIf="evaluationStatus == 8" class="example-full-width">
+            <textarea required matInput [(ngModel)]="comment" placeholder="Leave a comment"  name="comment"  maxlength="1000"></textarea>
+            <mat-hint>Max 1000 characters</mat-hint>
+        </mat-form-field>
+    </form>
+
+    <button (click)="onCancel()" mat-raised-button>Cancel</button>
+    <button [disabled]="prioritycheck.invalid" (click)="onSubmit()" mat-raised-button class="btn--blue">Submit</button>
+</div>

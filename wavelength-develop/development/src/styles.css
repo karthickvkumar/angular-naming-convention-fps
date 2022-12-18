@@ -1,0 +1,240 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@swimlane/ngx-datatable/release/index.css';
+@import '~@swimlane/ngx-datatable/release/themes/material.css';
+@import '~@swimlane/ngx-datatable/release/assets/icons.css';
+@import "theme.css";
+/* @import "~@ng-select/ng-select/themes/material.theme.css"; */
+/* @import "~@angular/material/prebuilt-themes/indigo-pink.css"; */
+
+
+/** ---Reusable CSS--- **/
+
+
+.btn--blue {
+  background-color: #3c8dbc;
+  color: #fff;
+}
+
+.btn--blue:hover {
+  background-color: #307096;
+  cursor: pointer;
+}
+
+.btn--red {
+  background-color: red;
+  color: #fff;
+}
+
+.btn--red:hover {
+  background-color: red;
+  cursor: pointer;
+}
+
+.btn--light {
+  background-color: #dddddd;
+  color: #212529;
+}
+
+.btn--light:hover {
+  background-color: #5a6268;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn--alt {
+  background-color: #f8f9fa;
+  color: #212529;
+  border: 1px solid #e2e6ea;
+}
+
+.btn--alt:hover {
+  background-color: #e2e6ea;
+  cursor: pointer;
+}
+
+.w__content {
+  padding: 80px 25px;
+  /* margin-left: 50px; */
+}
+
+.borderless td,
+.borderless th {
+  border: none !important;
+}
+
+
+
+select[disabled],
+input[disabled] {
+  background-color: #e5e5e5;
+  cursor: not-allowed;
+}
+
+:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.loader {
+  height: 150px;
+  position: absolute;
+  width: 30%;
+  text-align: center;
+  left: 35%;
+  top: 36%;
+}
+
+.info {
+  margin-top: 20px;
+}
+
+#wave-container {
+  position: relative;
+  height: 36px;
+  width: 170px;
+  margin: 30px auto 30px auto;
+}
+
+.dot-wave {
+  transform-origin: 50% 50%;
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+  top: 0;
+  background-color: #3c8dbc;
+  position: absolute;
+  animation: vertical-movement 2.5s infinite ease-in-out;
+}
+
+#d1 {
+  left: 12px;
+  animation-delay: -0.3s;
+  opacity: 0.2;
+}
+
+#d2 {
+  left: 24px;
+  animation-delay: -0.6s;
+  opacity: 0.3;
+}
+
+#d3 {
+  left: 36px;
+  animation-delay: -0.9s;
+  opacity: 0.4;
+}
+
+#d4 {
+  left: 48px;
+  animation-delay: -1.2s;
+  opacity: 0.5;
+}
+
+#d5 {
+  left: 60px;
+  animation-delay: -1.5s;
+  opacity: 0.6;
+}
+
+#d6 {
+  left: 72px;
+  animation-delay: -1.8s;
+  opacity: 0.7;
+}
+
+#d7 {
+  left: 84px;
+  animation-delay: -2.1s;
+  opacity: 0.8;
+}
+
+#d8 {
+  left: 96px;
+  animation-delay: -2.4s;
+  opacity: 0.85;
+}
+
+#d9 {
+  left: 108px;
+  animation-delay: -2.7s;
+  opacity: 0.9;
+}
+
+#d10 {
+  left: 120px;
+  animation-delay: -3s;
+  opacity: 0.95;
+}
+
+#d11 {
+  left: 132px;
+  animation-delay: -3.3s;
+  opacity: 1;
+}
+
+#d12 {
+  left: 144px;
+  animation-delay: -3.6s;
+  opacity: 1;
+}
+
+@keyframes vertical-movement {
+
+  0%,
+  100% {
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%);
+  }
+
+  50% {
+    -webkit-transform: translateY(30px);
+    transform: translateY(30px);
+  }
+}
+
+/** ---Overwrite CSS--- **/
+
+
+body {
+  /* line-height: 0; */
+  background-color: #EEEEEE;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
+
+.cdk-overlay-connected-position-bounding-box .mat-menu-content:not(:empty) {
+  padding: 0;
+}
+
+.cdk-overlay-connected-position-bounding-box {
+  top: 50px !important;
+}
+
+.s__container {
+  margin: 20px 0;
+  background-color: #fff;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+}
+
+.s__filters {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.s__filter-item {
+  width: 23%;
+  margin: 10px;
+}
+
+.mat-simple-snackbar {
+  justify-content: center !important;
+}
+
+.download-btn {
+  color: #212529;
+}
+
+.download-btn:hover {
+  color: #212529;
+}

@@ -1,0 +1,65 @@
+.w__content {
+    min-height: 100vh;
+    background-image: url("../../../assets/images/unauthorised-bg.png");
+    padding-top: 40px;
+}
+
+.un {
+    min-height: 700px;
+    background: url("../../../assets/images/unauthorised-modal.png") no-repeat center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.un__one {
+    font-size: 200px;
+    font-weight: 500;
+    margin-bottom: 0;
+    margin-top: 40px;
+}
+
+.un__two {
+    font-size: 70px;
+    font-weight: 500;
+    margin-top: -40px;
+}
+
+.un__link {
+    color: #3C8DBC !important;
+    font-size: 24px !important;
+    text-decoration: underline !important;
+}
+
+.un__link:hover {
+    cursor: pointer;
+}
+
+.auth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.auth__one {
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 32px;
+    color: #3C8DBC;
+}
+
+.auth__two {
+    color: #3C8DBC;
+    font-size: 24px;
+}
+
+/deep/ app-header {
+    display: none;
+}
+
+/deep/ app-audio-player {
+    display: none;
+}

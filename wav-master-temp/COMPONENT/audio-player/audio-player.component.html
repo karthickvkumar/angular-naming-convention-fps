@@ -1,0 +1,47 @@
+<div class="copy" [class.hidePlayerBar]="!player"> 2019 ©
+    <a href="http://fpsinc.com/" target="_blank"> Full Potential Solutions Pvt Ltd.</a>
+    <span class="copy-right">Version 1.4.3</span>
+</div>
+<mat-card *ngIf="player && !hidePlayerBar" class="a mat-elevation-z9">
+
+    <div class="a__ctrls">
+        <button class="a__btn-rewind mat-elevation-z3" (click)="seekPlayer(audioPlayedDuration - 5)" mat-mini-fab>
+            <i class="material-icons" title="Rewind">
+                fast_rewind
+            </i>
+        </button>
+
+        <button class="a__btn-play mat-elevation-z3" mat-fab>
+            <i *ngIf="player && !player.playing()" (click)="audioPlayerService.startPlaying();" class="material-icons" title="Play">
+                play_arrow
+            </i>
+            <i *ngIf="player && player.playing()" (click)="audioPlayerService.pausePlaying();" class="material-icons" title="Pause">
+                pause
+            </i>
+        </button>
+
+        <button class="a__btn-forward mat-elevation-z3" (click)="seekPlayer(audioPlayedDuration + 5)" mat-mini-fab>
+            <i class="material-icons" title="Forward">
+                fast_forward
+            </i>
+        </button>
+
+        <button class="a__btn-replay  mat-elevation-z3" (click)="seekPlayer(0)" mat-mini-fab>
+            <i class="material-icons" title="Replay">
+                replay
+            </i>
+        </button>
+
+    </div>
+
+    <mat-slider class="a__slider" [max]="player.duration()" (change)="seekPlayer(audioPlayedDuration)" [(ngModel)]="audioPlayedDuration"
+        name="duration" [step]="1" *ngIf="player"></mat-slider>
+
+    <div class="a__timer"> {{ playerTimer }} </div>
+
+    <div class="a_name"> {{ callInfo?.agentinfo || ''}} </div>
+
+    <button (click)="onEvaluate()" [disabled]="!(callInfo && callInfo?.isEvaluationEditor) || disableEvaluate || (callInfo && callInfo?.evaluationStatus === 'submitted')"
+        mat-stroked-button type="submit" class="a_btn-evaluate"> Evaluate </button>
+
+</mat-card>

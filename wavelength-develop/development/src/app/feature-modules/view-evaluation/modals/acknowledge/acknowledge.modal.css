@@ -1,0 +1,39 @@
+mat-form-field {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.btn--blue {
+    margin-left: 10px;
+}
+.icon{
+    border: solid 4px #25B93D;
+    width: 18px;
+    height: 18px;
+    border-radius: 100%;   
+    background: #fff;   
+}
+.sub_cont {
+    display: flex;
+    align-items: center;
+}
+.sub_head {
+    margin-left: 32px;
+    margin-top: 5px;
+}
+.icon_heading {
+    margin-left: 16px;
+    margin-top: 8px;
+}
+.icon_heading h4 {
+    font-size: 18px;
+}
+.right-sec {
+    float: right;
+    width: 93%;
+}
+.clear{
+    clear: both;
+}
+
+

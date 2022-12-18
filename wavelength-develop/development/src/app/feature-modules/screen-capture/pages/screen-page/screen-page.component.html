@@ -1,0 +1,23 @@
+<section class="w__content">
+    <div class="e__btns">
+        <button class="e__back-btn btn--alt" mat-raised-button (click)="goToCallSearch()">
+            <i class="material-icons">
+                arrow_back
+            </i>
+            Back
+        </button>
+    </div>
+    <mat-card class="mat-card">
+        <h3 class="mat-headline">Screen Capture</h3>
+        <div class="set__container">
+            <!--
+            <div class="set__sidebar">
+                <div class="set__sidebar-item" (click)="onNavigate('recordings')" [ngClass]="{'active': activePage === 'recordings'}"> Recordings </div>
+            </div>
+            -->
+            <div class="set__main">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </mat-card>
+</section>

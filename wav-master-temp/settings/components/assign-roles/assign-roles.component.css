@@ -1,0 +1,49 @@
+.s__container {
+    padding: 10px;
+    background-color: #fff;
+}
+
+.s__filters {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-bottom: 20px;
+}
+
+.s__filter-item {
+    width: 26%;
+
+    margin: 10px;
+}
+.s__select-btn {
+    font-size: 10px;
+    line-height: 28px;
+
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.s__actions {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.ng-value {
+    background-color: #E0E0E0 !important;
+    color: black !important;
+}
+
+.ng-value-icon {
+    color: black !important;
+    margin-left: 5px !important;
+}
+
+
+:host /deep/ .ng-option-selected {
+    background-color: #f5faff !important;
+    color: black !important;
+}
+
+/* :host /deep/ .mat-form-field-infix{
+    margin: 0 6px 6px 0;
+} */

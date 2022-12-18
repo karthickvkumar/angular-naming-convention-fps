@@ -1,0 +1,18 @@
+<div class="form-container">
+    <mat-form-field>
+        <input [disabled]="true" [(ngModel)]="username" matInput placeholder="User Name" value="Sushi">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select [(ngModel)]="userSelectedRoleName" placeholder="Roles">
+            <mat-option *ngFor="let role of roles" [value]="role.name">
+              {{role.name}}
+            </mat-option>
+          </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [disabled]="true"  placeholder="Email" [(ngModel)]="useremailid">
+    </mat-form-field>
+  
+    <button mat-raised-button (click)="onClose()" class="btn--alt">Cancel</button>
+  <button (click)="onSaveChanges()" mat-raised-button class="btn--blue">Update</button>
+  </div>

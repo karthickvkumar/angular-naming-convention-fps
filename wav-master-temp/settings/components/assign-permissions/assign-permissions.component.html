@@ -1,0 +1,30 @@
+<div *ngIf="showPage" class="s__container">
+<mat-form-field>
+    <mat-select (selectionChange)="onRoleChanged()" [(ngModel)]="objSelectedRoleName" placeholder="Choose a role to edit">
+      <mat-option *ngFor="let role of objlstRoleNamesAndId" [value]="role.name">
+        {{role.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let page of pages; let pageIndex = index" [disabled]="!page.isChecked" [expanded]="selectedPanel === page.name && page.isChecked" (opened)="openPanel(page)">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-checkbox *ngIf="page.name !== 'callsearch'" color="accent" class="example-margin" (change)="checkAllPermissionsForPage(pageIndex)"  [(ngModel)]="page.isChecked"></mat-checkbox> 
+          <mat-checkbox *ngIf="page.name === 'callsearch'" [disabled]="true" class="example-margin" (change)="checkAllPermissionsForPage(pageIndex)"  [(ngModel)]="page.isChecked"></mat-checkbox> 
+          <div class="pagename">
+            {{ page.name }}
+          </div>
+        </mat-panel-title>
+        <mat-panel-description>
+            
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+    <div>
+        <nz-tag [ngClass]="{ 'reqrd' : permission.mandatory}"  *ngFor="let permission of page.permissions; let permissionIndex = index" [nzColor]="permission.mandatory? '#108ee9': permission.isChecked? '#3c8dbc' : 'cyan'"  [nzMode]="permission.mandatory ? 'default' : 'checkable'" [nzChecked]="permission.mandatory ? true : permission.isChecked" (nzCheckedChange)="onPermissionChanged(pageIndex, permissionIndex)">{{ permission.name }}</nz-tag>
+    </div>
+    </mat-expansion-panel >
+  
+  </mat-accordion>
+  <button (click)="onSaveChanges()" mat-raised-button class="btn--blue">Save</button>
+</div>

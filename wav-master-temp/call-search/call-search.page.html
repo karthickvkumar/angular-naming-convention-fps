@@ -1,0 +1,230 @@
+<section *ngIf="showPage" class="w__content">
+  <div>
+    <h3 class="mat-headline">Call Search</h3>
+    <mat-card class="s__container">
+      <form form #callsearch="ngForm" autocomplete="false">
+        <div class="s__filters">
+          <div *ngIf="showAgents" class="s__filter-item">
+            <ng-select [items]="objlstSite" required [required]="true" [dropdownPosition]="'bottom'"
+              [(ngModel)]="objSite" placeholder="Site" title="This field is Mandatory" [multiple]="true"
+              [closeOnSelect]="false" [clearable]="true" name="site" (change)="onChangeSite()">
+              <ng-template ng-header-tmp>
+                <span style="color: red;font-size: 14px;">Selecting multiple sites might cause an error</span>
+                <!--
+                <button class="s__select-btn btn--blue" (click)="OnDDLSelectAll('site')" mat-raised-button> Select
+                  all
+                </button>
+                <button class="s__select-btn btn--blue" (click)="OnDDLUnSelectAll('site');" mat-raised-button>
+                  Unselect all
+                </button>
+                -->
+              </ng-template>
+              <ng-template ng-footer-tmp>
+                Selected count: {{objSite.length}}
+              </ng-template>
+              <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                <div class="ng-value" *ngFor="let item of (items ? items.slice(0,2): []); let i = index">
+                  <span class="ng-value-label"> {{item}} </span>
+                  <span class="ng-value-icon right" (click)="onDeleteSites(i, item)" aria-hidden="true">×</span>
+                </div>
+                <div class="ng-value" *ngIf="items.length > 2">
+                  <span class="ng-value-label"> {{items.length - 2}} more...</span>
+                </div>
+              </ng-template>
+            </ng-select>
+            <p *ngIf="!objSite || objSite.length < 1" class="error">This field is Mandatory</p>
+          </div>
+          <div *ngIf="showAgents" class="s__filter-item">
+            <div>
+              <ng-select name="agent" #agentselect [items]="objlstAgents" [multiple]="true" [clearable]="true"
+                bindLabel="employee_name" placeholder="Agents" bindValue="eid" [loading]="objLoadinAgents"
+                loadingText="Loading Agents ..." [closeOnSelect]="false" [(ngModel)]="objlstSelectedAgents">
+                <ng-template ng-header-tmp>
+                  <button class="s__select-btn btn--blue" (click)="OnDDLSelectAll('Agent')" mat-raised-button> Select
+                    all
+                  </button>
+                  <button class="s__select-btn btn--blue" (click)="OnDDLUnSelectAll('Agent');" mat-raised-button>
+                    Unselect all
+                  </button>
+                </ng-template>
+                <ng-template ng-footer-tmp>
+                  Selected count: {{objlstSelectedAgents.length}}
+                </ng-template>
+                <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                  <div class="ng-value" *ngFor="let item of (items ? items.slice(0,1): []); let i = index">
+                    <span class="ng-value-label"> {{item.employee_name}} </span>
+                    <span class="ng-value-icon right" (click)="onDeleteUser(i, item)" aria-hidden="true">×</span>
+                  </div>
+                  <div class="ng-value" *ngIf="items.length > 1">
+                    <span class="ng-value-label"> {{items.length - 1}} more...</span>
+                  </div>
+                </ng-template>
+              </ng-select>
+            </div>
+          </div>
+          <div class="s__filter-item">
+            <mat-form-field>
+              <input name="calldaterange" type="text" matInput placeholder="Call Date Range" bsDaterangepicker
+                [bsConfig]="{rangeInputFormat: 'YYYY-MM-DD', dateInputFormat: 'YYYY-MM-DD', rangeSeparator: ' - ', containerClass: 'theme-dark-blue' }"
+                [(ngModel)]="bsRangeValue">
+            </mat-form-field>
+          </div>
+          <div class="s__filter-item" [class.s__order]="!showAgents">
+            <ng-select [clearable]="false" [items]="objlstEvaluationForms" (change)="resetCallDisposition()"
+              [dropdownPosition]="'bottom'" [multiple]="false" bindLabel="title" bindValue="id"
+              [(ngModel)]="objSelectedEvaluationFormId" placeholder="Evaluation Form" name="EvaluationFormId">
+            </ng-select>
+          </div>
+          <div class="s__filter-item">
+            <div class="s__filter-slider-head"> Min Call duration (in secs) </div>
+            <mat-slider class="s__filter-slider" [(ngModel)]="minduration" thumbLabel [max]="120" name="duration"
+              [step]="5" tickInterval="5"></mat-slider>
+          </div>
+          <div class="s__filter-item">
+            <ng-select [items]="objlstDispositionFiltered" [dropdownPosition]="'bottom'" [(ngModel)]="objDisposition"
+              placeholder="Call Disposition" [multiple]="true" [closeOnSelect]="false" [clearable]="true"
+              bindLabel="disposition" bindValue="disposition" name="disposition">
+              <ng-template ng-header-tmp>
+                <button class="s__select-btn btn--blue" (click)="OnDDLSelectAll('disposition')" mat-raised-button>
+                  Select
+                  all
+                </button>
+                <button class="s__select-btn btn--blue" (click)="OnDDLUnSelectAll('disposition');" mat-raised-button>
+                  Unselect all
+                </button>
+              </ng-template>
+              <ng-template ng-footer-tmp>
+                Selected count: {{objDisposition.length}}
+              </ng-template>
+              <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                <div class="ng-value" *ngFor="let item of (items ? items.slice(0,3): []); let i = index">
+                  <span class="ng-value-label"> {{item.disposition}} </span>
+                  <span class="ng-value-icon right" (click)="onDeleteDisposition(i, item)" aria-hidden="true">×</span>
+                </div>
+                <div class="ng-value" *ngIf="items.length > 3">
+                  <span class="ng-value-label"> {{items.length - 3}} more...</span>
+                </div>
+              </ng-template>
+            </ng-select>
+          </div>
+          <div class="s__filter-item">
+            <mat-form-field>
+              <input type="text" #phone="ngModel" name="phonenumber" pattern="[-+(\d)]+" matInput minlength="10"
+                maxlength="20" placeholder="Phone Number" [(ngModel)]="objPhonenumber" />
+            </mat-form-field>
+            <mat-error *ngIf="phone.hasError('minlength') || phone.hasError('pattern')" class="error">
+              <ng-container *ngIf="phone.hasError('minlength')">
+                Phone number should not less than 10 digit. <br>
+              </ng-container>
+              <ng-container *ngIf="phone.hasError('pattern')">
+                Please enter a valid Phone Number. Allowed Special Characters +()-
+              </ng-container>
+            </mat-error>
+            <!--
+            <ng-container *ngIf="objPhonenumber && objPhonenumber.length > 0">
+              <p *ngIf="phone.hasError('minlength')" class="error">Min 10-20 digit</p>
+              <p *ngIf="phone.hasError('pattern')" class="error" >Please enter a valid Phone number.</p>
+            </ng-container>
+            -->
+          </div>
+          <div class="s__filter-btn">
+            <button [disabled]="callsearch.invalid" (click)="onCallSearch()" type="submit" class="btn--blue"
+              mat-raised-button>Search</button>
+          </div>
+        </div>
+      </form>
+      <div class="s__table">
+        <ngx-datatable class="material" [rows]="tableRows" [rowClass]="getRowClass" [columnMode]="'force'"
+          [messages]="getEmptyTableMessage()" [headerHeight]="50" [footerHeight]="40" [rowHeight]="'auto'"
+          [externalPaging]="true" [offset]="pageOffsetValue" [count]="(totalCount + 1)" (page)='onPageChange($event)'
+          (sort)="onTableSort($event)" [limit]="varRowLimit" [loadingIndicator]="tableLoadingIndicator">
+          <ngx-datatable-column prop="employee.agentname" name="Agent Name">
+            <ng-template let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+              {{ value | titlecase}}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column prop="employee.vendor" name="Site">
+            <ng-template let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+              {{ value }}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column prop="calldisposition" name="Call Disposition">
+            <ng-template let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+              {{ value }}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column prop="callenddatetime" name="Call Date Time">
+            <ng-template let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+              {{ value | titlecase}}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column prop="callduaration" name="Call Duration">
+            <ng-template let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+              {{ value }}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column prop="call_customer_num" name="Phone Number">
+            <ng-template let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+              {{ value }}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column prop="calldirection" name="Call Direction">
+            <ng-template let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+              {{ value | titlecase}}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column [sortable]="false" prop="surveyresponses.acknowledge_status"
+            name="Acknowledgment Status">
+            <ng-template let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+              <div class="status-label"
+                [ngClass]="{'label-info' : value.toLowerCase().trim() === 'yet to evaluate', 'label-warning': value.toLowerCase() === 'pending', 'label-success': value.toLowerCase() === 'acknowledged', 'label-danger': value.toLowerCase() === 'disputed'}">
+                {{ value | titlecase }} </div>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column [sortable]="false" prop="actionValues.evaluationStatus" name="Evaluation Status">
+            <ng-template let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+              <div class="status-label"
+                [ngClass]="{'label-info' : value === 'todo', 'label-warning': value === 'inprogress', 'label-success': value === 'submitted'}">
+                {{ value | titlecase }} </div>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column [sortable]="false" prop="actionValues" name="Actions">
+            <ng-template let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+              <i *ngIf="value.audiofileurl !== selectedRecordingFile" (click)="onPlayAudio(rowIndex)"
+                class="material-icons s__actions" title="Play">
+                play_arrow
+              </i>
+              <i *ngIf="value.audiofileurl === selectedRecordingFile && !isAudioPlaying" style="color:#3c8dbc;"
+                (click)="onPlayAudio(rowIndex)" class="material-icons s__actions" title="Play">
+                play_arrow
+              </i>
+              <i *ngIf="isAudioPlaying && value.audiofileurl === selectedRecordingFile" style="color:#3c8dbc;"
+                (click)="onPauseAudio()" class="material-icons s__actions" title="Pause">
+                pause
+              </i>
+              <i *ngIf="value.evaluationStatus === 'submitted' && appState.isPageAccessible('viewevaluation')"
+                (click)="onViewEvaluation(value.evaluationId, rowIndex)" class="material-icons s__actions"
+                title="View Evaluation">
+                remove_red_eye
+              </i>
+              <i *ngIf="value.isEvaluationEditor &&  value.evaluationStatus === 'todo'"
+                (click)="onCreateCallEvaluation(rowIndex)" class="material-icons s__actions" title="Evaluate">
+                launch
+              </i>
+              <i *ngIf="value.isEvaluationEditor && value.evaluationStatus === 'inprogress'"
+                (click)="onEditCallEvaluation(value.evaluationId, rowIndex)" class="material-icons s__actions"
+                title="Edit Evaluation">
+                edit
+              </i>
+              <!--
+              <i (click)="onScreenCapturePlayClick(rowIndex)" class="material-icons" title="Play Screen Share Video">
+                ondemand_video
+              </i>
+              -->
+            </ng-template>
+          </ngx-datatable-column>
+        </ngx-datatable>
+      </div>
+    </mat-card>
+  </div>
+</section>

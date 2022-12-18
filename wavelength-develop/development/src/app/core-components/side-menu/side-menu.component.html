@@ -1,0 +1,15 @@
+<mat-card class="sidemenu">
+  <div [ngClass]="selectedUrl === '/callsearch' ? 'menuactive' : 'menu'">
+    <a [ngClass]="selectedUrl === '/callsearch' ? 'menuactivelink' : ''" class="menulink" [routerLink]="['/callsearch']"
+      (click)="InitiateLoader()"> <i class="material-icons">search</i>
+      <div [ngClass]="selectedUrl === '/callsearch' ? 'menutextactive' : 'menutext'">Call Search</div>
+    </a>
+  </div>
+
+  <div [ngClass]="selectedUrl === '/acknowledgecalls' ? 'menuactive' : 'menu'">
+    <a [ngClass]="selectedUrl === '/acknowledgecalls' ? 'menuactivelink' : ''" class="menulink"
+      [routerLink]="['/acknowledgecalls']" (click)="InitiateLoader()"> <i class="material-icons">assignment</i>
+      <div [ngClass]="selectedUrl === '/acknowledgecalls' ? 'menutextactive' : 'menutext'">Acknowledge</div>
+    </a>
+  </div>
+</mat-card>

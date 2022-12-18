@@ -1,0 +1,92 @@
+.n {
+  position: fixed;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  line-height: 0;
+  
+  margin: 0;
+  padding: 10px 20px;
+  background-color: #3c8dbc;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+}
+
+.n__li {
+  list-style-type: none;
+
+  margin-right: 20px;
+}
+
+.n__logo {
+  width: 40px;
+  
+  margin-right: 10px;
+}
+
+.n__a {
+  color: #fff;
+  text-decoration: none;
+  
+  opacity: 0.7;
+}
+
+.n__li-last {
+  position: relative;
+
+  margin-left: auto;
+  margin-right: 10px;
+  
+  cursor: pointer;
+}
+
+.n__acc-set {
+  float: left;
+  margin-right: 30px;
+}
+
+.n__li-last .n__acc-info {
+  display: flex;
+  align-items: center;
+}
+
+.n__li-last .n__a-icon {
+  color: #fff;
+}
+
+.n__li-last .n__a {
+  margin-right: 10px;
+
+  opacity: 1;
+}
+
+.n__li-last .n__sep {
+  position: absolute;
+  left: 38px;
+  top: -17px;
+  border-right: 1px solid rgba(245, 245, 245, 0.21);;
+  height: 58.6px;
+}
+
+.n__out {
+  display:flex; 
+  align-items:center;
+}
+
+.n__out .material-icons {
+  padding-left: 5px;
+}
+
+.n__li.active .n__a{
+  opacity: 1;
+}
+
+
+/* Overwrite CSS */
+
+a:not([href]):not([tabindex]) {
+  color: #fff;
+}
+

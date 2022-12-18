@@ -1,0 +1,11 @@
+<div>
+  <p>Kindly press the acknowlege button to compelete the acknowledgment process</p>
+  <mat-form-field class="example-full-width">
+    <textarea required matInput [(ngModel)]="comment" placeholder="Leave a comment"></textarea>
+    <mat-hint>Comment is mandatory.</mat-hint>
+  </mat-form-field>
+
+  <button (click)="onCancel()" mat-raised-button>Cancel</button>
+  <button [hidden]="!appState.isOperationAvailable('acknowledge')" [disabled]="!comment || comment?.trim().length < 4" (click)="onAcknowledge('acknowledge')" mat-raised-button class="btn--blue">Acknowledge</button>
+  <button [hidden]="!appState.isOperationAvailable('dispute')" [disabled]="!comment || comment?.trim().length < 4" (click)="onAcknowledge('dispute')" mat-raised-button class="btn--blue">Dispute</button>
+</div>

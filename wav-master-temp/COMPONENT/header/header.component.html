@@ -1,0 +1,46 @@
+<nav>
+  <ul *ngIf="!hideSideBar" class="n">
+    <li class="n__li">
+      <a><img src="../../../assets/images/logo-icon.png" alt="" class="n__logo"></a>
+    </li>
+    <li *ngIf="isMenuAvailable('callsearch')" (click)="onNavigate('/callsearch')"
+      [ngClass]="selectedUrl === '/callsearch' ? 'active' : ''" class="n__li">
+      <a class="n__a active"> Call Search </a>
+    </li>
+    <li *ngIf="isMenuAvailable('acknowledgecalls')" (click)="onNavigate('/acknowledgecalls')"
+      [ngClass]="selectedUrl === '/acknowledgecalls' ? 'active' : ''" class="n__li">
+      <a class="n__a"> Acknowledge </a>
+    </li>
+    <li class="n__li n__li-last">
+      <!-- *ngIf="isMenuAvailable('reporting')" -->
+      <div (click)="onNavigate('/reporting')" class="n__acc-set">
+        <i class="material-icons n__a-icon">
+          bar_chart
+        </i>
+      </div>
+      <div *ngIf="isMenuAvailable('settings')" (click)="onNavigate('/settings')" class="n__acc-set">
+        <i class="material-icons n__a-icon">
+          settings
+        </i>
+      </div>
+      <div *ngIf="isMenuAvailable('settings')" class="n__sep">
+      </div>
+      <div [matMenuTriggerFor]="menu" class="n__acc-info">
+        <a class="n__a"> {{ appState.loggedInUser?.name.replace(',', ' ') | titlecase}} </a>
+        <i class="material-icons n__a-icon"> account_circle </i>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+
+<mat-menu class="matmenu" #menu="matMenu">
+  <button mat-menu-item (click)="logout()" class="n__out"> Logout
+    <i class="material-icons"> exit_to_app </i>
+  </button>
+  <!-- <button mat-menu-item (click)="onNavigate('/settings')" class="n__out"> Settings
+    <i class="material-icons">
+      settings
+      </i>
+  </button> -->
+</mat-menu>

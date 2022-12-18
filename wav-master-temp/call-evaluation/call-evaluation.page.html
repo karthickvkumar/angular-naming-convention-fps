@@ -1,0 +1,164 @@
+<section *ngIf="showPage" class="w__content">
+    <div class="e__header">
+        <div class="e__btns">
+          <button class="e__back-btn btn--alt" mat-raised-button (click)="goToCallSearch()">
+            <i class="material-icons">
+              arrow_back
+            </i>
+            Back
+          </button>
+          <button class="e__submit-btn btn--blue" [disabled]="!surveyform.valid" (click)="onSubmit('submitted')" mat-raised-button>Submit</button>
+          <button class="btn--alt" (click)="onSubmit('inprogress')" mat-raised-button>Save</button>
+        </div>
+        <div class="e__titles">
+          <h3 class="mat-title">{{ objEvaluationForm.description }}</h3>
+          <h3 class="mat-title e__title-score">Total score:
+            <span class="high-score">{{ getTotalPercentage() | number:'.1-2' }} %</span>
+          </h3>
+        </div>
+      </div>
+
+  <div id="surveyWrap">
+    <section class="e">
+      <mat-card>
+        <form form #surveyform="ngForm">
+          <div class="e__section">
+            <h5 class="e__section-title">Basic Information</h5>
+            <div class="e__section-box">
+              <div class="e__section-item" *ngFor="let header of objEvaluationForm.headers">
+                <div [ngSwitch]="header.type">
+                  <div *ngSwitchCase="'text'">
+                    <label class="semibold"> {{ header.name }}</label>
+                    <input type="text" [disabled]="header.disabled" [name]="header.name" [(ngModel)]="header.value"
+                      class="e__input" maxlength="256">
+                  </div>
+                  <div *ngSwitchCase="'textarea'">
+                    <label class="semibold">{{ header.name }}</label>
+                    <textarea [name]="header.name" [(ngModel)]="header.value" class="e__input" rows="3" placeholder="Maximum 500 characters"></textarea>
+                  </div>
+                  <div *ngSwitchCase="'select'">
+                    <label class="semibold">{{ header.name }}</label>
+                    <span class="required">
+                      <sup>*</sup>
+                    </span>
+                    <div>
+                      <select [name]="header.name" [(ngModel)]="header.value" class="e__input select2">
+                        <option>Alexander, Malinda</option>
+                        <option>Brothers, Danielle</option>
+                        <option>Espy, Rhema J.</option>
+                        <option>Fleming, Curtis</option>
+                        <option>Hayes, Lorita</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div *ngSwitchCase="'date'">
+                    <label class="semibold">{{ header.name }}</label>
+                    <div class="input-group">
+                      <input [(ngModel)]="header.value" [name]="header.name" type="text" class="e__input" id="datepicker">
+                      <div>
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngSwitchCase="'email'">
+                    <label class="semibold">{{ header.name }}</label>
+                    <span class="required">
+                      <sup>*</sup>
+                    </span>
+                    <input [name]="header.name" [(ngModel)]="header.value" type="email" class="e__input">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngFor="let group of objEvaluationForm.questiongroups" class="e__section">
+            <div>
+              <h5 class="e__section-title">{{ group.groupname }}
+                <span *ngIf="group.percentage && group.groupmode?.toLowerCase() === 'default'">- Score : {{
+                  getGroupScore(group.groupid) | number:'.1-2' }} %</span>
+                <span *ngIf="group.groupmode?.toLowerCase() === 'auto-failure'" [class.auto-failure]="group.groupmode?.toLowerCase() === 'auto-failure'">
+                   - Count : <span class="count">{{calculateFailureCount(group.groupid)}}</span></span>
+              </h5>
+              <div class="e__section-box">
+                <ng-container *ngFor="let question of group.questions">
+                  <ng-container [ngSwitch]="question.questiontype">
+                    <div class="e__section-item radio" *ngSwitchCase="'radio'">
+                      <label class="semibold">{{ question.questiontitle }}</label>
+                      <div>
+                        <div *ngFor="let option of question.options">
+                          <label>
+                            <input [(ngModel)]="question.value" class="e__input" [checked]="question.value === option"
+                              [name]="question.questionid" type="radio" [required]="question.mandatory" checked> {{
+                            option }}
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="e__section-item select" *ngSwitchCase="'select'">
+                      <label class="semibold">{{ question.questiontitle }} <span *ngIf="question.mandatory" class="required">*</span></label>
+                      <ng-select [dropdownPosition]="'bottom'" [required]="question.mandatory" [name]="question.questionid"
+                        placeholder="Select {{question.questiontitle}}" [(ngModel)]="question.value">
+                        <ng-option *ngFor="let value of question?.rawvalues?.split('|'); let i = index" [value]="value"
+                          selected>{{value}}</ng-option>
+                      </ng-select>
+                    </div>
+                    <div class="e__section-item textarea" *ngSwitchCase="'textarea'">
+                      <label class="semibold">{{ question.questiontitle }} <span *ngIf="question.mandatory" class="required">*</span></label>
+                      <textarea class="e__input" [name]="question.questionid" [required]="question.mandatory" rows="3" [(ngModel)]="question.value"
+                        [required]="question.mandatory" placeholder="Enter {{question.questiontitle}}"></textarea>
+                    </div>
+                    <div class="e__section-item textfield" *ngSwitchCase="'textfield'">
+                      <label class="semibold">{{ question.questiontitle }} <span *ngIf="question.mandatory" class="required">*</span></label>
+                      <input class="e__input" [(ngModel)]="question.value" [required]="question.mandatory" type="text" [name]="question.questionid"
+                        [required]="question.mandatory">
+                    </div>
+                  </ng-container>
+                </ng-container>
+              </div>
+              <div *ngFor="let question of group.questions">
+                <div [ngSwitch]="question.questiontype">
+                  <div class="e__section-line-item" *ngSwitchCase="'lineitems'">
+                    <table class="table table-striped table-bordered">
+                      <thead>
+                        <tr>
+                          <th class="semibold" style="width: 50%">{{ question.questiontitle }}</th>
+                          <th *ngFor="let option of question.options" class="semibold text-center" style="width: 5%">
+                            {{
+                            option }}</th>
+                          <th class="semibold" style="width: 35%">Comment</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngIf="question.subgroups.length > 1">
+                          <th align="left" valign="middle"> Select All </th>
+                          <td *ngFor="let option of question.options" class="text-center" (click)="selectAllRadio.click()">
+                            <input #selectAllRadio (click)="setScoreAndValueForLineItems(group.groupid, question.questionid ,option)"
+                              [checked]="question.value === option" [(ngModel)]="question.value" [value]="option"
+                              [name]="question.questionid" type="radio">
+                          </td>
+                          <td></td>
+                        </tr>
+                        <tr *ngFor="let squestion of question.subgroups">
+                          <td>{{ squestion.questiontitle }}</td>
+                          <td *ngFor="let option of question.options" class="text-center" (click)="valueRadio.click()">
+                            <input #valueRadio [value]="option" (click)="setLineItemScoreValue(group.groupid, question.questionid, squestion.questionid, option, squestion.score);"
+                              [(ngModel)]="squestion.value" [name]="squestion.questionid" [checked]="squestion.value === option"
+                              type="radio" required>
+                          </td>
+                          <td>
+                            <textarea class="e__input" rows="1" [(ngModel)]="squestion.comment" [name]="squestion?.questionid.toString() + '-c'"
+                              placeholder="Enter Comment here"></textarea>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </mat-card>
+    </section>
+  </div>
+</section>

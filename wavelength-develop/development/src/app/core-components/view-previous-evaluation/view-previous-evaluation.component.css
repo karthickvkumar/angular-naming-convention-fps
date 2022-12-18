@@ -1,0 +1,266 @@
+.w__content {
+    line-height: normal;
+    margin-left: 60px;
+}
+
+.v {
+    margin-top: 120px;
+    padding: 0 30px;
+}
+
+.v__header {
+    position: fixed;
+    top: 50px;
+    width: 100%;
+    z-index: 500;
+    height: 140px;
+    padding: 30px 60px 0 120px;
+    background-color: #EEEEEE;
+    margin-bottom: 10px;
+    right: 0;
+    box-shadow: 0 2px 4px 0 #cdcdcd;
+    background-color: #fafafa;
+}
+
+.v__btns,
+.v__titles {
+    display: flex;
+}
+
+.v__back-btn{
+    margin-right: auto;
+}
+
+.v__back-btn i {
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+.v__cmnt-btn {
+    margin-right: 10px;
+}
+
+.v__acknowledge-btn {
+    margin-right: 10px;
+}
+
+.v__cmnt-btn i {
+    font-size: 16px;
+    color: #3c8dbc;
+}
+
+.v__titles {
+    margin-top: 20px;
+}
+
+.v__title-score {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.v__title-score .high-score {
+    color: #00A65A;
+}
+
+.v__title-score .medium-score {
+    color: #F39C12;
+}
+
+.v__title-score .low-score {
+    color: #DD4B39;
+}
+
+.v__mat-card {
+    padding: 20px 0;
+}
+
+.v__wrapper {
+    padding: 0;
+}
+
+.v__section {
+    margin: 10px 10px 15px;
+    background: linear-gradient(to left, #C4E0E5, #3c8dbc);
+    border-radius: 4px;
+    padding-bottom: 10px;
+}
+
+.v__sec-title {
+    font-size: 1.125rem;
+    font-weight: 500;
+    padding-left: 12px;
+    padding-top: 10px;
+    margin-bottom: 10px;
+    color: #fff;
+    text-shadow: 0 1px 3px #00000087;
+}
+
+.v__sec-item {
+    background-color: #FFF;
+    margin: 10px 10px;
+    padding: 10px;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+.v__ques,
+.v__ques-head,
+.v__ans,
+.v__comment {
+    padding: 12px;
+}
+
+.v__ques-head {
+    font-weight: 700;
+}
+
+.v__comment {
+    font-style: italic;
+    color: #808080;
+    word-break: break-word;
+}
+
+.v__sidebar {
+    width: 70px;
+    position: fixed;
+    top: 40%;
+    left: 0px;
+    padding: 0;
+}
+
+.v__s-menu {
+    padding: 10px 5px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.v__s-menu:first-child {
+    border-bottom: 1px solid #CDCDCD;
+}
+
+.v__s-menu:hover {
+    box-shadow: 0px 2px 2px 0px #9A9A9A;
+    background-color: #3C8DBC;
+    color: white;
+}
+
+.v__s-text {
+    font-size: 7px;
+}
+
+
+/** ---Tables--- **/
+
+.table {
+    width: 100%;
+    margin-bottom: 16px;
+    background-color: transparent;
+}
+
+.table th,
+.table td {
+    padding: 12px;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody {
+    border-top: 2px solid #dee2e6;
+}
+
+.table .table {
+    background-color: #000;
+}
+
+.table-sm th,
+.table-sm td {
+    padding: 4.8px;
+}
+
+.table-bordered {
+    border: 1px solid #dee2e6;
+}
+
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid #dee2e6;
+}
+
+.table-bordered thead th,
+.table-bordered thead td {
+    border-bottom-width: 2px;
+}
+
+.table-borderless th,
+.table-borderless td,
+.table-borderless thead th,
+.table-borderless tbody+tbody {
+    border: 0;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, .05);
+}
+/* label */
+.periority {
+    display: inline;
+    padding: .3em .6em .4em;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+    margin-right: 10px
+}
+.t__head {
+    display: flex;
+    align-items: center;
+}
+
+.t__head p {
+    font-size: 24px; 
+    margin-bottom: 0; 
+    font-weight: 500;
+}
+
+.t__head i {
+    margin-left: auto;
+}
+
+.Low{
+    background-color: #25B93D !important;
+}
+
+.Medium {
+    background-color: #FFBD13 !important;
+}
+.High {
+    background-color: #F52C2C !important;
+}
+.spinner-div {
+    display: flex;
+    justify-content: center;
+}
+:host /deep/ .mat-spinner, 
+:host /deep/ .mat-progress-spinner svg {
+    width: 50px !important;
+    height: 50px !important;
+}
+.pointer{
+    cursor: pointer;
+}
+.adjustt__view{
+    overflow: auto;
+    height: 80vh;
+}
+    

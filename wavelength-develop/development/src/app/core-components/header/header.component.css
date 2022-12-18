@@ -1,0 +1,174 @@
+.n {
+  position: fixed;
+  z-index: 1100;
+
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  line-height: 0;
+  
+  margin: 0;
+  padding: 10px 20px;
+  background-color: #3c8dbc;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+}
+
+.n__li {
+  list-style-type: none;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.n__logo {
+  width: 40px;
+  
+  margin-right: 10px;
+}
+
+.n__a {
+  color: #fff;
+  text-decoration: none;
+  
+  opacity: 0.7;
+}
+
+.n__li-last {
+  position: relative;
+
+  margin-left: auto;
+  margin-right: 10px;
+  
+  cursor: pointer;
+}
+
+.n__acc-set, 
+.n__acc-not {
+  float: left;
+  margin-right: 30px;
+}
+
+.n__acc-not {
+  color: #fff;
+}
+
+.n__acc-not .badge {
+  position: absolute;
+  left: 13px;
+  top: 1px;
+  font-size: xx-small;
+  color: #F52C2C;
+}
+
+.n__li-last .n__acc-info {
+  display: flex;
+  align-items: center;
+}
+
+.n__li-last .n__a-icon {
+  color: #fff;
+}
+
+.n__li-last .n__a {
+  margin-right: 10px;
+
+  opacity: 1;
+}
+
+.n__li-last .n__sep {
+  position: absolute;
+  left: 38px;
+  top: -17px;
+  border-right: 1px solid rgba(245, 245, 245, 0.21);;
+  height: 58.6px;
+}
+
+.n__out {
+  display:flex; 
+  align-items:center;
+}
+
+.n__out .material-icons {
+  padding-left: 5px;
+}
+
+.n__help.matmenu {
+  min-width: 100px;
+}
+
+.n__help .mat-menu-item {
+  padding: 0 20px;
+}
+
+
+.n__li.active .n__a{
+  opacity: 1;
+  cursor: pointer;
+}
+
+
+/* Overwrite CSS */
+
+a:not([href]):not([tabindex]) {
+  color: #fff;
+}
+
+
+/* help dropdown 
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  float: left;
+}
+
+.dropbtn {
+    font-size: 14px;
+    cursor: pointer;
+    background: transparent;
+    border: 0px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  left: 7px;
+  top: 32px;
+  background-color: #fff;
+  min-width: 90px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  padding: 5px 5px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+  font-weight: 400;
+}
+.dropdown-content::before {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    bottom: 100%;
+    right: 15px;
+    border-width: 0 6px 6px 6px;
+    border-style: solid;
+    border-color: #fff transparent;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 10px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown-content a:hover {
+  background-color: #f1f1f1
+}
+.dropdown:hover .dropbtn {
+    background-color:transparent;
+}
+ help dropdown end */

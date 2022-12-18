@@ -1,0 +1,363 @@
+.actions {
+    cursor: pointer;
+}
+.s__container {
+    margin: 20px 0;
+
+    background-color: #fff;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+}
+
+.s__filters {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-bottom: 20px;
+}
+
+.s__filter-item {
+    width: 23%;
+
+    margin: 10px;
+}
+
+.s__select-btn {
+    font-size: 10px;
+    line-height: 28px;
+
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.s__filter-slider-head {
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.s__filter-btn {
+    margin-left: auto;
+    order: 4;
+}
+
+.s__filter-btn button {
+    float: right;
+
+    margin-top: 24px;
+    margin-right: 40px;
+}
+
+.s__table {
+    padding-top: 10px;
+}
+
+.s__actions {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.s__order {
+    order: 3;
+}
+
+.status-label {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+
+.label-purple {
+    background-color: #673AB7 !important;
+}
+
+.label-blue {
+    background-color: #4FC3F7 !important;
+}
+
+.label-green {
+    background-color: #4CAF50 !important;
+}
+
+.label-red {
+    background-color: #F44336 !important;
+}
+
+.label-yellow {
+    background-color: #FFC107 !important;
+}
+
+.label-black {
+    background-color: #424242 !important;
+}
+
+
+
+
+/* Overwrite CSS */
+
+.ng-value {
+    background-color: #E0E0E0 !important;
+    color: black !important;
+}
+
+.ng-value-icon {
+    color: black !important;
+    margin-left: 5px !important;
+    vertical-align: text-top;
+}
+
+::ng-deep .mat-form-field-infix {
+    padding: .65em 0 !important;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+:host /deep/ .datatable-header-cell-label {
+    color: black;
+    font-weight: 600;
+
+}
+
+:host /deep/ .datatable-header-cell {
+    background-color: #fafafa;
+}
+
+:host /deep/ .ng-option-selected {
+    background-color: #f5faff !important;
+    color: black !important;
+}
+
+
+:host /deep/ .ng-dropdown-panel-items {
+    background-color: white !important;
+    color: black !important;
+}
+
+:host /deep/ .empty-row {
+    margin-top: 10px !important;
+    text-align: center !important;
+}
+
+.emptyMessage {
+    text-align: center;
+}
+
+::ng-deep .s__filter-slider .mat-slider-thumb-label {
+    transform: rotate(45deg) !important;
+    border-radius: 50% 50% 0 !important;
+    top: -30px !important;
+    height: 22px !important;
+    width: 22px !important;
+    right: -10 !important;
+}
+
+::ng-deep .s__filter-slider {
+    width: 100%;
+
+    margin-top: 10.5px;
+}
+
+::ng-deep .s__filter-slider .mat-slider-thumb {
+    transform: scale(0) !important;
+}
+
+::ng-deep .s__filter-slider .mat-slider-thumb-label-text {
+    opacity: 1 !important;
+    font-size: 10px;
+}
+
+:host /deep/ .datatable-body-row.active .datatable-row-group {
+    background-color: #eee !important;
+    color: white !important;
+}
+
+::ng-deep .row-active{
+    background-color: #3c8dbc1a;
+    transition-property: background;
+    transition-duration: .3s;
+    transition-timing-function: linear;
+    box-shadow: 1px 4px 7px 0px #e2e2e2;
+}
+
+::ng-deep .ngx-datatable .datatable-body-row.row-active .datatable-body-cell{
+    display: flex;
+    align-items: center;
+}
+
+::ng-deep .ngx-datatable .datatable-body-row.row-active .datatable-body-cell .datatable-body-cell-label {
+    font-weight: 500;
+}
+
+::ng-deep .ngx-datatable.material .datatable-footer .page-count {
+    display: none;
+}
+::ng-deep .ngx-datatable.material .datatable-footer .datatable-pager ul.pager li:last-child {
+    display: none;
+}
+
+.error {
+    color: red;
+    font-size: 80%;
+    margin-top: -15px;
+}
+
+/* evaluation page label legends */
+.status-legends{
+    display: flex;
+    flex-wrap: wrap;
+}
+.status-legends p{
+    font-weight: 600;
+    font-size: 12px;
+}
+span[class^="legends"]{
+    height: 15px;
+    width: 15px;   
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+}
+.legends-acknowledged{
+    border: 1px solid #25B93D;
+    background-color: #25B93D;
+}
+.legends-disputed{    
+    border: 1px solid #F52C2C;
+    background-color: #F52C2C;
+}
+.legends-yet{    
+    border: 1px solid #10C6FF;
+    background-color: #10C6FF;
+}
+.legends-passed{   
+    border: 1px solid #FFBD13;
+    background-color: #FFBD13;
+}
+.legends-closed{    
+    border: 1px solid #8C8C8C;
+    background-color: #8C8C8C;
+}
+.status-legends div{
+    display: flex;
+    padding-left: 10px;
+    font-size: 12px;
+    margin-right: 10px;
+}
+/* /evaluation page label legends */
+
+/* priority */
+.High{
+    color: #F52C2C;
+}
+.Medium{
+    color: #FFBD13;
+}
+.Low{
+    color: #25B93D;
+}
+/* /priority */
+.c__btn-close{
+    font-size: 14px;
+}
+
+/* range filter starts */
+/deep/.ng5-slider .ng5-slider-bar{
+    left: 0;
+    width: 100%;
+    height: 1px !important;
+    z-index: 1;
+    background: rgba(0,0,0,0.42) !important;
+   
+    
+}
+/deep/ .s__filter-item .ng5-slider .ng5-slider-bar.ng5-slider-selection {
+    left: 0;
+    width: 100%; 
+    z-index: 1;
+    background: #3C8DBC !important;
+    outline: 1px solid #3C8DBC !important;
+    
+    }
+/deep/ .ng5-slider .ng5-slider-pointer {
+    cursor: pointer;
+    width: 8px !important;
+    height: 18px !important;
+    top: -8px !important;
+    background-color: #3C8DBC !important;
+    z-index: 3;
+    border-radius: 16px;
+}
+    
+/deep/ .ng5-slider .ng5-slider-pointer:after {
+    content: '';
+    width: 0px !important;
+    height: 0px !important;
+    position: absolute;
+    top: 0px!important;
+    left: 0px !important;
+    border-radius: 4px;
+    background: #3C8DBC !important;
+}
+/deep/.ng5-slider .ng5-slider-bubble {
+    cursor: default;
+    bottom: 16px;
+    padding: 1px 3px;
+    color: #3C8DBC !important;
+    font-size: 16px;
+}
+/deep/ .ng5-slider .ng5-slider-bubble.ng5-slider-limit {
+    color: rgba(0, 0, 0, 0.54) !important;
+}
+/* range filter end */
+
+/* tooltip starts */
+/deep/ .tooltip {
+        position: absolute !important;
+        top: -55px !important;
+        font-size: 12px !important;
+        left: -85px !important;        
+        width: 150px !important;
+        text-align: center !important; 
+    }
+/* tooltip ends */
+
+.error {
+    color: red;
+    font-size: 80%;
+    margin-top: -15px;
+}
+.e__btn-close{
+    font-size: 14px;
+}
+.label-purple {
+    background-color: #673AB7 !important;
+}
+
+.label-blue {
+    background-color: #4FC3F7 !important;
+}
+
+.label-green {
+    background-color: #4CAF50 !important;
+}
+
+.label-red {
+    background-color: #F44336 !important;
+}
+
+.label-yellow {
+    background-color: #FFC107 !important;
+}
+
+.label-black {
+    background-color: #424242 !important;
+}

@@ -1,0 +1,102 @@
+<section *ngIf="showPage" class="w__content">
+    <div class="e__header">
+        <div class="e__btns">
+            <button class="e__back-btn btn--alt" mat-raised-button (click)="goToCallSearch()">
+                <i class="material-icons">
+                    arrow_back
+                </i>
+                Back
+            </button>
+            <button class="e__view-btn" *ngIf="objShowReevaluationButtons" (click)="onViewPreviousEvaluation()"
+                mat-raised-button>View Previous Evaluation</button>
+            <button class="e__view-btn" *ngIf="objShowReevaluationButtons" (click)="onShowComments()"
+                mat-raised-button>View Comments</button>
+
+            <!--- Submit/Submit Revaluation button -->
+            <button class="e__submit-btn btn--blue" *ngIf="!objShowReevaluationButtons" [disabled]="!surveyform.valid"
+                (click)="onSubmit('submitted')" mat-raised-button>Submit</button>
+
+
+            <button class="e__submit-btn btn--blue" *ngIf="objShowReevaluationButtons" [disabled]="!surveyform.valid"
+                (click)="onSubmit(objAllowedTransition.ButtonLabel[1])"
+                mat-raised-button>{{objAllowedTransition.ButtonLabel[1]}}</button>
+            <button class="btn--alt" *ngIf="objShowReevaluationButtons" [disabled]="!surveyform.valid"
+                (click)="onSubmit('inprogress')" mat-raised-button>{{objAllowedTransition.ButtonLabel[0]}}</button>
+
+            <button class="btn--alt" *ngIf="!objShowReevaluationButtons" (click)="onSubmit('inprogress')"
+                mat-raised-button>Save</button>
+        </div>
+        <div class="e__titles">
+            <h3 class="mat-title">{{ objEvaluationDetails?.evaluation_form?.title }}</h3>
+            <!-- <h3 class="mat-title e__title-score">Total score:
+                <span class="high-score">{{ overAllScore | number:'.1-2' }} %</span>
+            </h3> -->
+        </div>
+
+    </div>
+
+    <div id="surveyWrap">
+        <section class="e">
+            <mat-card>
+                <!-- <form form #surveyform="ngForm"> -->
+                <div class="e__section">
+                    <h5 class="e__section-title">Basic Information</h5>
+                    <div class="e__section-box">
+                        <div class="e__section-item" *ngFor="let header of objEvaluationForm?.headers">
+                            <div [ngSwitch]="header.type">
+                                <div *ngSwitchCase="'text'">
+                                    <label class="semibold"> {{ header.name }}</label>
+                                    <input type="text" [disabled]="header.disabled" [name]="header.name"
+                                        [(ngModel)]="header.value" class="e__input" maxlength="256">
+                                </div>
+                                <div *ngSwitchCase="'textarea'">
+                                    <label class="semibold">{{ header.name }}</label>
+                                    <textarea [name]="header.name" [(ngModel)]="header.value" class="e__input" rows="3"
+                                        placeholder="Maximum 500 characters"></textarea>
+                                </div>
+                                <div *ngSwitchCase="'select'">
+                                    <label class="semibold">{{ header.name }}</label>
+                                    <span class="required">
+                                        <sup>*</sup>
+                                    </span>
+                                    <div>
+                                        <select [name]="header.name" [(ngModel)]="header.value"
+                                            class="e__input select2">
+                                            <option>Alexander, Malinda</option>
+                                            <option>Brothers, Danielle</option>
+                                            <option>Espy, Rhema J.</option>
+                                            <option>Fleming, Curtis</option>
+                                            <option>Hayes, Lorita</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div *ngSwitchCase="'date'">
+                                    <label class="semibold">{{ header.name }}</label>
+                                    <div class="input-group">
+                                        <input [(ngModel)]="header.value" [name]="header.name" type="text"
+                                            class="e__input" id="datepicker">
+                                        <div>
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngSwitchCase="'email'">
+                                    <label class="semibold">{{ header.name }}</label>
+                                    <span class="required">
+                                        <sup>*</sup>
+                                    </span>
+                                    <input [name]="header.name" [(ngModel)]="header.value" type="email"
+                                        class="e__input">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- FORM RENDERER LIBRARY -->
+                <fps-form-renderer [json]="questiongroups" [form_type]="formType" (result)="onFormSubmit($event)">
+                </fps-form-renderer>
+                <!-- </form> -->
+            </mat-card>
+        </section>
+    </div>
+</section>

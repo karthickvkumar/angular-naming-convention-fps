@@ -1,0 +1,25 @@
+<section *ngIf="showPage" class="w__content">
+  <div>
+    <h3 class="mat-headline">Calls to Acknowledge</h3>
+    <mat-card>
+      <div>
+        <ngx-datatable class="material" [rows]="tableRows" [columnMode]="'force'" [headerHeight]="50"
+          [footerHeight]="40" [rowHeight]="'auto'" [externalPaging]="false" [offset]="0" [count]="totalCount"
+          [limit]="10" (page)='onPageChange($event)' [loadingIndicator]="tableLoadingIndicator">
+          <ngx-datatable-column prop="survey.title" name="Evaluation Form"> </ngx-datatable-column>
+          <ngx-datatable-column prop="created_at" name="Created At"></ngx-datatable-column>
+          <ngx-datatable-column prop="finalscore" name="Final Score"> </ngx-datatable-column>
+          <ngx-datatable-column prop="createduser.name" name="Evaluator"> </ngx-datatable-column>
+          <ngx-datatable-column prop="responseid" name="Actions">
+            <ng-template let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+              <i *ngIf="appState.isPageAccessible('viewevaluation')" (click)="onViewEvaluation(value)"
+                class="material-icons actions">
+                remove_red_eye
+              </i>
+            </ng-template>
+          </ngx-datatable-column>
+        </ngx-datatable>
+      </div>
+    </mat-card>
+  </div>
+</section>

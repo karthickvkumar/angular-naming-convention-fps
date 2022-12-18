@@ -1,0 +1,197 @@
+.s__container {
+    margin: 20px 0;
+
+    background-color: #fff;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+}
+
+.s__filters {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-bottom: 20px;
+}
+
+.s__filter-item {
+    width: 23%;
+
+    margin: 10px;
+}
+
+.s__select-btn {
+    font-size: 10px;
+    line-height: 28px;
+
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.s__filter-slider-head {
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.s__filter-btn {
+    margin-left: auto;
+}
+
+.s__filter-btn button {
+    float: right;
+
+    margin-top: 24px;
+    margin-right: 40px;
+}
+
+.s__table {
+    padding-top: 10px;
+}
+
+.s__actions {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.s__order {
+    order: -1;
+}
+
+.status-label {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+
+.label-success {
+    background-color: #25B93D !important;
+}
+
+.label-warning {
+    background-color: #FFBD13 !important;
+}
+
+.label-info {
+    background-color: #10C6FF !important;
+}
+
+.label-danger {
+    background-color: #F52C2C !important;
+}
+
+
+
+/* Overwrite CSS */
+
+.ng-value {
+    background-color: #E0E0E0 !important;
+    color: black !important;
+}
+
+.ng-value-icon {
+    color: black !important;
+    margin-left: 5px !important;
+}
+
+::ng-deep .mat-form-field-infix {
+    padding: .65em 0 !important;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+:host /deep/ .datatable-header-cell-label {
+    color: black;
+    font-weight: 600;
+
+}
+
+:host /deep/ .datatable-header-cell {
+    background-color: #fafafa;
+}
+
+:host /deep/ .ng-option-selected {
+    background-color: #f5faff !important;
+    color: black !important;
+}
+
+
+:host /deep/ .ng-dropdown-panel-items {
+    background-color: white !important;
+    color: black !important;
+}
+
+:host /deep/ .empty-row {
+    margin-top: 10px !important;
+    text-align: center !important;
+}
+
+.emptyMessage {
+    text-align: center;
+}
+
+::ng-deep .s__filter-slider .mat-slider-thumb-label {
+    transform: rotate(45deg) !important;
+    border-radius: 50% 50% 0 !important;
+    top: -30px !important;
+    height: 22px !important;
+    width: 22px !important;
+    right: -10 !important;
+}
+
+::ng-deep .s__filter-slider {
+    width: 100%;
+
+    margin-top: 10.5px;
+}
+
+::ng-deep .s__filter-slider .mat-slider-thumb {
+    transform: scale(0) !important;
+}
+
+::ng-deep .s__filter-slider .mat-slider-thumb-label-text {
+    opacity: 1 !important;
+    font-size: 10px;
+}
+
+:host /deep/ .datatable-body-row.active .datatable-row-group {
+    background-color: #eee !important;
+    color: white !important;
+}
+
+::ng-deep .row-active{
+    background-color: #3c8dbc1a;
+    transition-property: background;
+    transition-duration: .3s;
+    transition-timing-function: linear;
+    box-shadow: 1px 4px 7px 0px #e2e2e2;
+}
+
+::ng-deep .ngx-datatable .datatable-body-row.row-active .datatable-body-cell{
+    display: flex;
+    align-items: center;
+}
+
+::ng-deep .ngx-datatable .datatable-body-row.row-active .datatable-body-cell .datatable-body-cell-label {
+    font-weight: 500;
+}
+
+::ng-deep .ngx-datatable.material .datatable-footer .page-count {
+    display: none;
+}
+::ng-deep .ngx-datatable.material .datatable-footer .datatable-pager ul.pager li:last-child {
+    display: none;
+}
+
+.error {
+    color: red;
+    font-size: 80%;
+    margin-top: -15px;
+}

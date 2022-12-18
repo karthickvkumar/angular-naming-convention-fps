@@ -1,0 +1,229 @@
+<div class="t__container">
+  <div class="t__head">
+    <p>Status History</p>
+    <i class="material-icons position" *ngIf="!(buttonVal === '6' && isActionButtonNum ===2) && !isAcceptClicked"
+      (click)="onCancel()"> close
+    </i>
+  </div>
+  <div class="spinner-div" *ngIf="!objLstComments  && isLoader">
+    <mat-spinner></mat-spinner>
+  </div>
+
+
+  <!-- <div class="main" *ngFor="let comment of objLstComments; let i = index"
+    [class.last-comment]="objLstComments.length === i+1 && !isActionButtonVisible">
+    <div class="sub_cont">
+      <div [ngClass]="{'icon-red' : comment.status_id == 5 || comment.status_id == 6, 
+  'icon-yellow' : comment.status_id == 8 || comment.status_id == 9,
+  'icon-green' : comment.status_id == 4 || comment.status_id == 7,
+  'icon-black' : comment.status_id == 10 }"></div>
+      <div class="icon_heading">
+        <h4> {{ comment.status }} </h4>
+      </div>
+    </div>
+    <div class="right-sec">
+      <div class="w__comment-title">
+        <label for="" class="comment-red">{{ comment.commented_by }}</label>
+        <label class="w__comment-time">{{ comment.date | amDateFormat: 'YYYY-MM-DD hh:mm:ss A' }}</label>
+      </div>
+      <div class="w__comment-content">
+        <div class="w__comment-text">{{ comment.comment }}</div>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div> 
+
+<div class="main last-comment" *ngIf="isActionButtonVisible && !isLoader">
+      <div class="sub_cont" *ngIf="isActionButtonNum === 1">
+        <div [ngClass]="{'icon-red' : buttonVal == 5 || buttonVal == 6, 
+    'icon-green' : buttonVal == 4 || buttonVal == 7,
+    'icon-yellow' : buttonVal == 10 || buttonVal == 8}"></div>
+        <div class="icon_heading">
+          <h4> {{ disputeEvalHeading.name }} </h4>
+        </div>
+      </div>
+      <div class="right-sec">
+        <ng-container [ngSwitch]="buttonVal">
+          <ng-container *ngSwitchCase="4">
+            <ng-container *ngTemplateOutlet="acknowledge"></ng-container>
+          </ng-container>
+          <ng-container *ngSwitchCase="5">
+            <ng-container *ngTemplateOutlet="dispute"></ng-container>
+          </ng-container>
+          <ng-container *ngSwitchCase="10">
+            <ng-container *ngTemplateOutlet="agent_acknowledge"></ng-container>
+          </ng-container>
+          <ng-container *ngSwitchCase="6">
+            <ng-container *ngTemplateOutlet="review_dispute"></ng-container>
+          </ng-container>
+        </ng-container>
+      </div>
+      <div class="clear"></div>
+    </div>
+-->
+
+  <div>
+    <ul class="t__list">
+      <li class="t__item" *ngIf="isYTBVisible">
+        <div class="t__item-status">
+          <div class="t__item-icon icon-blue">
+          </div>
+          Yet to be Acknowledged
+        </div>
+      </li>
+    </ul>
+    <ng-container *ngIf="isYTBVisible && pending_with && !isActionButtonVisible">
+      <p class="pending_with">Pending with <span class="bold">{{pending_with}}</span></p>
+    </ng-container>
+  </div>
+  <div>
+    <ul class="t__list" *ngIf="!isYTBVisible">
+      <li class="t__item" *ngFor="let comment of objLstComments; let i = index"
+        [class.last-comment]="objLstComments.length === i+1 && !isActionButtonVisible">
+        <div class="t__item-status">
+          <div class="t__item-icon"
+            [ngClass]="{'icon-red' : comment.status_id == 5 || comment.status_id == 6, 'icon-yellow' : comment.status_id == 8 || comment.status_id == 9, 'icon-green' : comment.status_id == 4 || comment.status_id == 7, 'icon-black' : comment.status_id == 10 }">
+          </div>
+          {{ comment.status }}
+        </div>
+        <div class="t__item-details">
+          <div>{{ comment.commented_by }}</div>
+          <div>{{ comment.date | amDateFormat: 'YYYY-MM-DD hh:mm:ss A' }}</div>
+        </div>
+        <div class="t__item-comment">
+          {{ comment.comment }}
+        </div>
+      </li>
+
+      <li class="t__item" *ngIf="isActionButtonVisible && !isLoader">
+        <!-- <div class="t__item-status" *ngIf="isActionButtonNum === 1">
+        <div class="t__item-icon" [ngClass]="{'icon-red' : buttonVal == 5 || buttonVal == 6, 
+            'icon-green' : buttonVal == 4 || buttonVal == 7,
+            'icon-yellow' : buttonVal == 10 || buttonVal == 8}"></div>
+        {{ disputeEvalHeading.name }}
+      </div> -->
+        <div>
+          <ng-container [ngSwitch]="buttonVal">
+            <ng-container *ngSwitchCase="4">
+              <div class="t__item-status" *ngIf="isActionButtonNum === 1">
+                <div class="t__item-icon" [ngClass]="{'icon-red' : buttonVal == 5 || buttonVal == 6, 
+                  'icon-green' : buttonVal == 4 || buttonVal == 7,
+                  'icon-yellow' : buttonVal == 10 || buttonVal == 8}">
+                </div>
+                Acknowledge
+              </div>
+              <ng-container *ngTemplateOutlet="acknowledge"></ng-container>
+            </ng-container>
+            <ng-container *ngSwitchCase="5">
+              <div class="t__item-status" *ngIf="isActionButtonNum === 1">
+                <div class="t__item-icon" [ngClass]="{'icon-red' : buttonVal == 5 || buttonVal == 6, 
+                      'icon-green' : buttonVal == 4 || buttonVal == 7,
+                      'icon-yellow' : buttonVal == 10 || buttonVal == 8}">
+                </div>
+                Dispute
+              </div>
+              <ng-container *ngTemplateOutlet="dispute"></ng-container>
+            </ng-container>
+            <ng-container *ngSwitchCase="10">
+              <div class="t__item-status" *ngIf="isActionButtonNum === 1">
+                <div class="t__item-icon" [ngClass]="{'icon-red' : buttonVal == 5 || buttonVal == 6, 
+                      'icon-green' : buttonVal == 4 || buttonVal == 7,
+                      'icon-yellow' : buttonVal == 10 || buttonVal == 8}">
+                </div>
+                Acknowledge
+              </div>
+              <ng-container *ngTemplateOutlet="agent_acknowledge"></ng-container>
+            </ng-container>
+            <ng-container *ngSwitchCase="6">
+              <div class="t__item-status" *ngIf="isActionButtonNum === 1">
+                <div class="t__item-icon" [ngClass]="{'icon-red' : buttonVal == 5 || buttonVal == 6, 
+                      'icon-green' : buttonVal == 4 || buttonVal == 7,
+                      'icon-yellow' : buttonVal == 10 || buttonVal == 8}">
+                </div>
+                Review Dispute
+              </div>
+              <ng-container *ngTemplateOutlet="review_dispute"></ng-container>
+            </ng-container>
+          </ng-container>
+        </div>
+      </li>
+    </ul>
+    <ng-container *ngIf="!isActionButtonVisible && !isLoader && !isYTBVisible &&  pending_with">
+      <p class="pending_with">Pending with <span class="bold">{{pending_with}}</span></p>
+    </ng-container>
+  </div>
+</div>
+
+
+<ng-template #acknowledge let-list>
+  <p>Kindly press the acknowledge button to complete the acknowledgment process</p>
+  <mat-form-field class="example-full-width">
+    <textarea required matInput [(ngModel)]="comment" placeholder="Leave a comment" maxlength="1000"></textarea>
+    <mat-hint>Max 1000 characters</mat-hint>
+  </mat-form-field>
+  <button (click)="onCancel()" mat-raised-button>Cancel</button>
+  <button [disabled]="!comment || comment?.trim().length < 4  || actionClicked"
+    (click)="onSubmitButtonClicked('acknowledge')" mat-raised-button class="btn--blue">Acknowledge</button>
+</ng-template>
+
+<ng-template #agent_acknowledge let-list>
+  <p>Kindly press the acknowledge button to complete the acknowledgment process</p>
+  <mat-form-field class="example-full-width">
+    <textarea required matInput [(ngModel)]="comment" placeholder="Leave a comment" maxlength="1000"></textarea>
+    <mat-hint>Max 1000 characters</mat-hint>
+  </mat-form-field>
+  <button (click)="onCancel()" mat-raised-button>Cancel</button>
+  <button [disabled]="!comment || comment?.trim().length < 4  || actionClicked"
+    (click)="onSubmitButtonClicked('agent_acknowledge')" mat-raised-button class="btn--blue">Acknowledge</button>
+</ng-template>
+
+
+<ng-template #dispute let-list>
+  <p>Kindly press the dispute button to complete the dispute process</p>
+  <mat-form-field class="example-full-width">
+    <textarea required matInput [(ngModel)]="comment" placeholder="Leave a comment" maxlength="1000"></textarea>
+    <mat-hint>Max 1000 characters</mat-hint>
+  </mat-form-field>
+  <button (click)="onCancel()" mat-raised-button>Cancel</button>
+  <button [disabled]="!comment || comment?.trim().length < 4  || actionClicked"
+    (click)="onSubmitButtonClicked('dispute')" mat-raised-button class="btn--red"
+    style="margin-left: 10px">Dispute</button>
+</ng-template>
+
+<ng-template #review_dispute let-list>
+  <ng-container *ngIf="isActionButtonNum === 1">
+    <p>Do you wish to accept the dispute raised on this evaluation?</p>
+    <mat-form-field class="example-full-width">
+      <textarea required matInput [(ngModel)]="comment" placeholder="Leave a comment" maxlength="1000"></textarea>
+      <mat-hint>Max 1000 characters</mat-hint>
+    </mat-form-field>
+    <button [disabled]="!comment || comment?.trim().length < 4 || actionClicked"
+      (click)="onSubmitButtonClicked('reject')" class="btn--red " mat-raised-button>Reject</button>
+    <button [disabled]="!comment || comment?.trim().length < 4 || actionClicked"
+      (click)="onSubmitButtonClicked('accept', true)" class="btn--blue" mat-raised-button>Accept</button>
+  </ng-container>
+  <ng-container *ngIf="isActionButtonNum === 2">
+    <p>Assign re-evaluation to</p>
+    <ng-select [items]="analystList" (change)="changeAnalyst()" [dropdownPosition]="'bottom'" [multiple]="false"
+      bindLabel="employee_name" [(ngModel)]="objSelectedAnalyst" placeholder="Quality Analyst" name="analystId">
+    </ng-select>
+    <!-- <button (click)="onCancel()" mat-raised-button>Cancel</button> -->
+    <button [disabled]="!objSelectedAnalyst" (click)="onAssignQA()" class="btn--blue" mat-raised-button>Assign</button>
+  </ng-container>
+  <ng-container *ngIf="isActionButtonNum === 3">
+    <p>Re evaluation Assigned to <span>{{assignedQA.employee_name}}</span></p>
+  </ng-container>
+</ng-template>
+<ng-template #dispute_accepted let-list>
+  <div class="w__reevalution">
+    <p>Assign re evaluation to</p>
+
+    <ng-select [items]="analystList" (change)="changeAnalyst()" [dropdownPosition]="'bottom'" [multiple]="false"
+      bindLabel="employee_name" bindValue="eid" [(ngModel)]="objSelectedAnalyst" placeholder="Quality Analyst"
+      name="analystId">
+    </ng-select>
+
+    <!-- <button (click)="onCancel()" mat-raised-button>Cancel</button> -->
+    <button [disabled]="!objSelectedAnalyst" (click)="onAssignQA()" class="btn--blue" mat-raised-button>Assign</button>
+  </div>
+</ng-template>

@@ -1,0 +1,86 @@
+<div class="v__mat-card">
+  <div class="t__head">
+    <i class="material-icons pointer" (click)="onCancel()"> close
+    </i>
+  </div>
+  <div class="spinner-div" *ngIf="isLoader">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div *ngIf="!isLoader" class="adjustt__view">
+    <div class="v__titles" style="margin: 10px;">
+      <h3 class="mat-title">{{ objEvaluationForm?.description }}</h3>
+      <h3 class="mat-title v__title-score">
+        <span
+          class="periority {{objEvaluationForm?.severity_name}}">{{objEvaluationForm?.evaluation_disposition_name}}</span>
+        Final Score:&nbsp;
+        <span class="high-score">{{ objEvaluationForm?.finalscore }} %</span>
+      </h3>
+    </div>
+    <div class="v__wrapper" *ngIf="objEvaluationForm">
+      <div class="v__section">
+        <h3 class="v__sec-title">Basic Information</h3>
+        <div class="v__sec-item">
+          <table class="table borderless">
+            <tbody style="border-top: 0">
+              <tr *ngFor="let header of objEvaluationForm.headers">
+                <td style="width: 25%; font-weight: 500">
+                  {{ header.name }}
+                </td>
+                <td style="width: 75%">{{ header.value }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="v__section" *ngFor="let group of objEvaluationForm.questiongroups">
+        <h3 class="v__sec-title"> {{ group.groupname }}
+          <ng-container *ngIf="group.groupmode === 'default'">
+            <span *ngIf="getGroupScore(group.groupid); let gscore">- Score : {{ gscore.obscore | number:'.1-2' }}
+              %</span>
+          </ng-container>
+          <ng-container *ngIf="group.groupmode === 'auto-failure'">
+            <span *ngIf="getGroupScore(group.groupid); let gscore"> - Count : <span
+                class="count">{{ gscore.obscore }}</span></span>
+          </ng-container>
+        </h3>
+        <div *ngFor="let question of group.questions">
+          <div [ngSwitch]="question.questiontype">
+            <div *ngSwitchDefault class="v__sec-item">
+              <div class="v__ques-head">
+                {{ question.questiontitle }}
+              </div>
+              <div class="v__ans">
+                {{ question.value }}
+              </div>
+              <div *ngIf="question.comment" class="v__comment">
+                {{ "- " + question.comment }}
+              </div>
+            </div>
+            <div *ngSwitchCase="'lineitems'" class="v__sec-item">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th class="v__ques-head" style="width: 50%"> {{ question.questiontitle }}</th>
+                    <th class="v__ques-head" style="width: 10%">
+                      Answer
+                    </th>
+                    <th class="v__ques-head" style="width: 40%">
+                      Comment
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let squestion of question.subgroups">
+                    <td class="v__ques">{{ squestion.questiontitle }}</td>
+                    <td class="v__ans">{{ squestion.value }}</td>
+                    <td class="v__comment"> {{ squestion.comment || '' }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

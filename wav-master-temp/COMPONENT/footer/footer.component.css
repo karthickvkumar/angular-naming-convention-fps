@@ -1,0 +1,22 @@
+.copy {
+  height: 30px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #E1E1E1;
+  font-size: 12px;
+  line-height: 26px;
+  color: #3c8dbc;
+}
+
+.copy-left {
+  display: inline;
+  margin-left: 75px;
+}
+
+.copy-right {
+  display: inline;
+  float: right;
+  margin-right: 30px;
+}

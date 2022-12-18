@@ -1,0 +1,57 @@
+.s__container {
+    margin: 20px 0;
+
+    background-color: #fff;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+}
+
+.s__filters {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-bottom: 20px;
+}
+
+.s__filter-item {
+    width: 23%;
+
+    margin: 10px;
+}
+
+.s__select-btn {
+    font-size: 10px;
+    line-height: 28px;
+
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.s__filter-slider-head {
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.s__filter-btn {
+    margin-left: auto;
+}
+
+.s__filter-btn button {
+    float: right;
+
+    margin-top: 24px;
+    margin-right: 40px;
+}
+
+.s__table {
+    padding-top: 10px;
+}
+
+.s__actions {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.s__order {
+    order: -1;
+}

@@ -1,0 +1,63 @@
+<div *ngIf="showPage" class="s__container">
+    <div class="s__filters">
+        <div class="s__filter-item">
+            <ng-select [items]="objlstUserRoles" [multiple]="true" [clearable]="true" bindLabel="name"
+                placeholder="Roles" bindValue="id" (change)="onUserListChange()" [closeOnSelect]="false"
+                [(ngModel)]="objlstSelectedUserRoles">
+                <ng-template ng-header-tmp>
+                    <button class="s__select-btn btn--blue" (click)="OnDDLSelectAll()" mat-raised-button> Select all
+                    </button>
+                    <button class="s__select-btn btn--blue" (click)="OnDDLUnSelectAll()" mat-raised-button> Unselect
+                        all
+                    </button>
+                </ng-template>
+                <ng-template ng-footer-tmp>
+                    Selected count: {{objlstSelectedUserRoles.length}}
+                </ng-template>
+                <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                    <div class="ng-value" *ngFor="let item of (items ? items.slice(0,1): []); let i = index">
+                        <span class="ng-value-label"> {{item.name}} </span>
+                        <span class="ng-value-icon right" (click)="removeRole(i)" aria-hidden="true">×</span>
+                    </div>
+                    <div class="ng-value" *ngIf="items.length > 1">
+                        <span class="ng-value-label"> {{items.length - 1}} more...</span>
+                    </div>
+                </ng-template>
+            </ng-select>
+        </div>
+        <div class="s__filter-item">
+            <mat-form-field>
+                <input (keyup)="subTextSearch.next($event.target.value)" [(ngModel)]="objTextSearch" matInput
+                    placeholder="Type to filter users">
+            </mat-form-field>
+        </div>
+    </div>
+    <ngx-datatable class="material" [rows]="objlstUserWithRoles" [columnMode]="'force'"
+        [messages]="getEmptyTableMessage()" [headerHeight]="50" [footerHeight]="40" [rowHeight]="'auto'"
+        [externalPaging]="true" [offset]="pageOffsetValue" [count]="tableRowCount" [sorts]="[{prop: 'name', dir: 'asc'}]" (sort)="onTableSort($event)" [limit]="takeCount"
+        (page)="onPageChange($event)" [loadingIndicator]="tableLoadingIndicator">
+        <ngx-datatable-column prop="name" name="User Name">
+            <ng-template let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+                {{ value | titlecase}}
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column prop="email" name="Email">
+            <ng-template let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+                {{ value | titlecase}}
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column prop="role" name="Role" [sortable]="false" >
+            <ng-template let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+                {{ value | titlecase}}
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column prop="user_id" name="Actions">
+            <ng-template let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+                <i (click)="onOpenDialog(rowIndex)" class="material-icons s__actions">
+                    edit
+                </i>
+            </ng-template>
+        </ngx-datatable-column>
+
+    </ngx-datatable>
+</div>

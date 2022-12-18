@@ -1,0 +1,42 @@
+.mat-card {
+    text-align: center;
+    width: 450px;
+    margin: 0 auto;
+}
+
+.w__content {
+    min-height: 100vh;
+    background-image: url("../../../assets/images/unauthorised-bg.png");
+    padding-top: 40px;
+}
+
+.lt {
+    margin-top: 15vh;
+}
+
+.lt__img {
+    display: flex;
+    justify-content: center;
+}
+
+.lt__card {
+    margin-top: 10vh;
+}
+
+.lt__p {
+    margin-bottom: 0;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.lt__btn-div {
+    margin-top: 25px;
+}
+
+.btn--blue:hover {
+    background-color: #307096 !important;
+}
+
+::ng-deep app-audio-player {
+    display: none;
+}

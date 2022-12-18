@@ -1,0 +1,55 @@
+.s__container {
+    padding: 10px;
+    background-color: #fff;
+}
+::ng-deep .mat-icon-button .cdk-focused .cdk-mouse-focused{
+    outline-color: white !important;
+}
+
+::ng-deep .mat-icon-rtl-mirror .mat-icon .material-icons {
+    outline-color: white !important;
+}
+
+.pagename {
+    margin-left: 25px;
+}
+
+::ng-deep .mat-checkbox-input{
+    background-color: #3c8dbc !important;
+}
+
+::ng-deep .reqrd .ant-tag{
+    cursor: not-allowed !important;
+}
+
+.btn--blue {
+    float: right; 
+    margin-top: 40px;
+}
+
+
+.mat-chip {
+    color: #13c2c2;
+    background: #e6fffb;
+    border-color: #87e8de;
+}
+/deep/.mat-ripple-element{
+    background: none !important;
+}
+/deep/.mat-chip.mat-standard-chip::after {
+    background: none !important;
+}
+.mat-chip.required {
+    background-color: #1890ff;
+    color: #fff;
+    cursor: not-allowed !important;
+}
+
+.mat-chip.checked {
+    background-color: #3c8dbc;
+    color: #fff;
+}
+.mat-chip.mat-standard-chip {
+    background-color: none !important;
+    color: none !important;
+}

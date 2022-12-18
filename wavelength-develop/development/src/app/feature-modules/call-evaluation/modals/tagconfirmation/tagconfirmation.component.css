@@ -1,0 +1,11 @@
+::ng-deep .mat-dialog-container {
+    overflow: visible !important;
+}
+
+.btn--blue{
+    margin-left: 10px;
+}
+mat-form-field {
+    width: 100%;
+    margin-bottom: 30px;
+}

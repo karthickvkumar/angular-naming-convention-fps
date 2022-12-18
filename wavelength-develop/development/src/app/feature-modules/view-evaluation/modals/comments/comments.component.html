@@ -1,0 +1,96 @@
+<!-- <div>
+    <div class="w__comment-heading">Comments
+    <i class="material-icons"  (click)="onCancel()">
+        close
+    </i></div>
+
+<div class="w__comment-content">
+    <div class="w__comment-title">
+        <label for="" class="comment-red">{{ agentName }}</label>
+        <label for="" class="comment-grey"></label>
+        <label class="w__comment-time">{{ commentStartTime | amDateFormat: 'YYYY-MM-DD hh:mm:ss A' }}</label>
+    </div>
+    <div class="w__comment-text">
+        {{ commentText }}
+    </div>
+</div>
+</div> -->
+
+
+
+<div>
+        <div class="w__icon">
+            <i class="material-icons position" (click)="onCancel()">
+                        close
+                    </i>
+        </div>
+        <div class="clear"></div>
+        <div class="main">
+            <div class="sub_cont">
+                <div class="icon"></div>
+                <div class="icon_heading">
+                    <h4>Disputed</h4>
+                </div>
+            </div>
+            <div class="right-sec">
+                <div class="w__comment-title">
+                    <label for="" class="comment-red">{{ agentName }}</label>
+                </div>
+                <div class="w__comment-content">
+                    <!-- <div class="w__comment-title">
+                                          <label for="" class="comment-red">{{ agentName }}</label> -->
+                    <label for="" class="comment-grey"></label>
+                    <label class="w__comment-time">{{ commentStartTime | amDateFormat: 'YYYY-MM-DD hh:mm:ss A' }}</label>
+                    <!-- </div> -->
+                    <div class="w__comment-text">{{ commentText }}</div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div>
+        <div class="main">
+            <div class="sub_cont">
+                <div class="icon1"></div>
+                <div class="icon_heading">
+                    <h4>Dispute Rejected</h4>
+                </div>
+            </div>
+            <div class="right-sec">
+                <div class="w__comment-title">
+                    <label for="" class="comment-red">{{ agentName }}</label>
+                </div>
+                <div class="w__comment-content">
+                    <!-- <div class="w__comment-title">
+                                              <label for="" class="comment-red">{{ agentName }}</label> -->
+                    <label for="" class="comment-grey"></label>
+                    <label class="w__comment-time">{{ commentStartTime | amDateFormat: 'YYYY-MM-DD hh:mm:ss A' }}</label>
+                    <!-- </div> -->
+                    <div class="w__comment-text">{{ commentText }}</div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div>
+        <div class="sub_cont">
+            <div class="icon2"></div>
+            <div class="icon_heading">
+                <h4>Closed</h4>
+            </div>
+        </div>
+        <div class="right-sec">
+            <div class="w__comment-title">
+                <label for="" class="comment-red">{{ agentName }}</label>
+            </div>
+            <div class="w__comment-content">
+                <!-- <div class="w__comment-title">
+                                                              <label for="" class="comment-red">{{ agentName }}</label> -->
+                <label for="" class="comment-grey"></label>
+                <label class="w__comment-time">{{ commentStartTime | amDateFormat: 'YYYY-MM-DD hh:mm:ss A' }}</label>
+                <!-- </div> -->
+                <div class="w__comment-text">{{ commentText }}</div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>     

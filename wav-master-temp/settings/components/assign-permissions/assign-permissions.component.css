@@ -1,0 +1,28 @@
+.s__container {
+    padding: 10px;
+    background-color: #fff;
+}
+::ng-deep .mat-icon-button .cdk-focused .cdk-mouse-focused{
+    outline-color: white !important;
+}
+
+::ng-deep .mat-icon-rtl-mirror .mat-icon .material-icons {
+    outline-color: white !important;
+}
+
+.pagename {
+    margin-left: 25px;
+}
+
+::ng-deep .mat-checkbox-input{
+    background-color: #3c8dbc !important;
+}
+
+::ng-deep .reqrd .ant-tag{
+    cursor: not-allowed !important;
+}
+
+.btn--blue {
+    float: right; 
+    margin-top: 40px;
+}

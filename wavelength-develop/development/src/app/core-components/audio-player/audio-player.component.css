@@ -1,0 +1,177 @@
+.copy {
+    width: 100%;
+    box-sizing: border-box;
+
+    display: flex;
+    font-size: 14px;
+    line-height: 20px;
+    color: #374767;
+    text-align: left;
+
+    background: #f9f9fa;
+    border-top: 1px solid #e1e6ef;
+    padding: 15px 20px;
+    margin-top: -51px;
+    /* margin-bottom: 70px; */
+}
+
+.copy.hidePlayerBar {
+    margin-bottom: 5px;
+}
+
+.copy-help {
+    margin-left: auto;
+}
+
+.copy-icon {
+    color: #3c8dbc;
+    line-height: 18px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+/* .copy-right{
+    float: right;
+    
+    color: #aaa;
+} */
+
+.a {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 65px;
+
+    color: black;
+    text-align: center;
+
+    background-color: #FAFAFA;
+    border: 2px solid #EEEEEE;
+    padding: 0 50px;
+    margin: 0;
+}
+
+.a__ctrls {
+    display: flex;
+    align-items: center;
+}
+
+[class^="a__btn"] {
+    margin: 0 8px;
+    background-color: white;
+    color: black;
+    outline: 0 !important;
+}
+
+.a__btn-rewind,
+.a__btn-forward {
+    width: 30px;
+    height: 30px;
+}
+
+.a__btn-rewind i,
+.a__btn-forward i {
+    font-size: 20px;
+}
+
+.a__btn-play {
+    width: 45px;
+    height: 45px;
+}
+
+.a__btn-play i {
+    font-size: 30px;
+}
+
+.a__btn-replay {
+    width: 25px;
+    height: 25px;
+}
+
+.a__btn-replay i {
+    font-size: 16px;
+}
+
+.a__slider {
+    width: -webkit-fill-available;
+}
+
+
+.a__timer {
+    font-size: 14px;
+    margin: 0 10px;
+    width: 200px;
+}
+
+.a_name {
+    font-size: 14px;
+    font-weight: 500;
+    width: auto;
+    white-space: pre;
+    text-align: left;
+ }
+ .a_btn-evaluate {
+    min-width: 90px;
+ }
+ .a__btn-playlist {
+    margin: 15px;
+    width: 35px;
+    height: 35px;
+    background-color: white;
+    color: black;
+    outline: 0 !important;
+ }
+ .a__btn-playlist i {
+    font-size: 24px;
+    padding-left: 5px;
+ }
+ .p__bar {
+    position: fixed;
+    right: 160px;
+    bottom: 60px;
+    z-index: 1001;
+    background-color: #fff;
+    width: auto;
+    padding: 20px;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+ }
+ .p__bar > div {
+    font-size: 14px;
+    padding-bottom: 5px;
+    color: black;
+    font-weight: 500;
+    cursor: pointer;
+ }
+ .p__bar > div:last-child {
+    padding-bottom: 0;
+ }
+
+/* Overwrite CSS */
+
+::ng-deep .a__btn-play.mat-fab .mat-button-wrapper,
+::ng-deep .a__btn-replay.mat-mini-fab .mat-button-wrapper,
+::ng-deep .a__btn-forward.mat-mini-fab .mat-button-wrapper,
+::ng-deep .a__btn-rewind.mat-mini-fab .mat-button-wrapper {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+::ng-deep .cdk-focused .cdk-mouse-focused {
+    outline: none;
+}
+.playlist_list{
+    cursor: pointer;
+}
+.showPlayer{
+    display: block;
+}
+.dontShowPlayer{
+    display: none;
+}

@@ -1,0 +1,25 @@
+<ng-select [items]="objLstInputItems" [required]="objMandatory === 1" [dropdownPosition]="'bottom'"
+  [(ngModel)]="ObjOutput" placeholder="{{objLabel}}" title="{{objTooltip}}" [multiple]="objMultiple === 1"
+  [closeOnSelect]="objCloseOnSelect === 1" [clearable]="objClearable === 1" name="{{objName}}" (change)="onChangeSite()">
+  <ng-template ng-header-tmp>
+    <button class="s__select-btn btn--blue" (click)="OnDDLSelectAll()" mat-raised-button> Select
+      all
+    </button>
+    <button class="s__select-btn btn--blue" (click)="OnDDLUnSelectAll();" mat-raised-button>
+      Unselect all
+    </button>
+  </ng-template>
+  <ng-template ng-footer-tmp>
+    Selected count: {{ ObjOutput ? ObjOutput.length: 0 }}
+  </ng-template>
+  <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+    <div class="ng-value" *ngFor="let item of (items ? items.slice(0,2): []); let i = index">
+      <span class="ng-value-label"> {{item}} </span>
+      <span class="ng-value-icon right" (click)="onDeleteSites(i)" aria-hidden="true">×</span>
+    </div>
+    <div class="ng-value" *ngIf="items.length > 2">
+      <span class="ng-value-label"> {{items.length - 2}} more...</span>
+    </div>
+  </ng-template>
+</ng-select>
+<p *ngIf="!ObjOutput || ObjOutput.length < 1" class="error">This field is Mandatory</p>

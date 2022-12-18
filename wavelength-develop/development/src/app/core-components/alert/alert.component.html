@@ -1,0 +1,20 @@
+<!-- 
+<div class="alert-header">
+  {{ header }}
+</div>
+<div *ngFor="let msg of messages" class="alert-message">
+    {{ msg}} 
+</div>
+<button (click)="close()" class="alert-btn" mat-raised-button>Close</button> -->
+
+
+
+<div>
+  <p>
+      {{ header }}
+  </p>
+  <div *ngFor="let msg of messages" class="alert-message">
+      {{ msg}} 
+  </div>
+  <button (click)="close()" class="btn--alt" mat-raised-button>Close</button>
+</div>

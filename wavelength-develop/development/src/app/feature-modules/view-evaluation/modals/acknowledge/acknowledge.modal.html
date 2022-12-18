@@ -1,0 +1,20 @@
+<div>
+    <div class="sub_cont">
+        <div class="icon"></div>
+        <div class="icon_heading">
+          <h4>Acknowledge Evaluation</h4>
+        </div>
+    </div>
+      <div class="right-sec">
+        <p>Kindly press the acknowlege button to compelete the acknowledgment process</p>
+        <mat-form-field class="example-full-width">
+          <textarea required matInput [(ngModel)]="comment" placeholder="Leave a comment"></textarea>
+          <mat-hint>Comment is mandatory.</mat-hint>
+        </mat-form-field>
+
+        <button (click)="onCancel()" mat-raised-button>Cancel</button>
+        <button [hidden]="!appState.isOperationAvailable('acknowledge')" [disabled]="!comment || comment?.trim().length < 4"
+          (click)="onAcknowledge('evaluation')" mat-raised-button class="btn--blue">Acknowledge</button>
+    </div>
+    <div class="clear"></div>
+</div>

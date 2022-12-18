@@ -1,0 +1,48 @@
+<div class="not">
+    <div class="spinner-div" *ngIf="isLoader">
+        <mat-spinner></mat-spinner>
+    </div>
+    <div class="not__head">
+        <div class="not__close-btn">
+            <i class="material-icons" (click)="sideBarClosed()">close</i>
+        </div>
+        <div class="not__heading">Notifications</div>
+        <div *ngIf="!isLoader && !showNoNotDiv && unreadCount !== 0" class="not__count">
+            ( <i class="material-icons">lens</i> {{unreadCount}} unread&nbsp;)
+        </div>
+        <div *ngIf="!isLoader && !showNoNotDiv && unreadCount !== 0" class="not__head-btn" (click)="markAllAsRead()">
+            Mark all as read</div>
+    </div>
+    <div class="not__body" *ngIf="!isLoader && !showNoNotDiv">
+        <div class="not__container" *ngFor=" let notification of objNotification">
+            <div class="not__sts">
+                <div>
+                    {{ notification.created_at }}
+                </div>
+                <div *ngIf="notification.read_at === null" class="not__sts-btn" (click)="markAsRead(notification.id)"
+                    title="Mark as read">
+                    <i class="material-icons ico"> </i>
+                </div>
+            </div>
+            <div *ngIf="notification.data.type !== 'EvaluationEscalation'" class="not__msg" [ngClass]="{'unread': notification.read_at === null}">
+                The <a class="eval__link" (click)="markAsRead(notification.id,notification.data.eval_id)"
+                   >evaluation</a>
+                   <!-- href="/viewevaluation/{{notification.data.eval_id}}" -->
+                for {{ notification.data.agent_name }} has been moved to <strong>{{ notification.data.target_status }}</strong> by
+              <span *ngIf="notification.data?.qa_specialist_name">{{ notification.data.qa_specialist_name }}</span>
+              <span  *ngIf="!notification.data?.qa_specialist_name">{{ notification.data.name }}</span>
+            </div>
+            <div *ngIf="notification.data.type === 'EvaluationEscalation'"  class="not__msg" [ngClass]="{'unread': notification.read_at === null}">
+                {{notification.data.supervisor}} has <b>1 more day</b> left to dispute the <a class="eval__link" (click)="markAsRead(notification.id,notification.data.eval_id)"
+                >evaluation</a> of {{ notification.data.agent_name }}
+            </div>
+
+        
+            <div style="border: 1px solid #eeeeee;"></div>
+        </div>
+    </div>
+
+    <div *ngIf="showNoNotDiv" class="not__body-alt">
+        No Notifications to show
+    </div>
+</div>

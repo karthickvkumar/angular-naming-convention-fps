@@ -1,0 +1,77 @@
+<div class="copy" [class.hidePlayerBar]="!player"> 2019 ©
+    <a class="copy-left" href="http://fpsinc.com/" target="_blank">&nbsp;Full Potential Solutions Inc.</a>
+    <a href="/user-manual/user-doc.html" target="_blank" class="copy-help">
+        <i class="material-icons copy-icon">help</i>
+    </a>
+    <span class="copy-version">Version 2.1.2</span>
+</div>
+<!-- [class.showPlayer]="showPlayer" [class.dontShowPlayer]="!showPlayer" -->
+<mat-card *ngIf="player && !hidePlayerBar && showPlayer " class="a mat-elevation-z9"  >
+
+    <div class="a__ctrls" >
+        <button [disabled]='!enablePrevious' *ngIf="playListVisible"
+            class="a__btn-replay  mat-elevation-z3" (click)="playPrevious()" mat-mini-fab>
+            <i class="material-icons" title="Previous">
+                skip_previous
+            </i>
+        </button>
+        <button class="a__btn-rewind mat-elevation-z3" (click)="seekPlayer(audioPlayedDuration - 5)" mat-mini-fab>
+            <i class="material-icons" title="Rewind">
+                fast_rewind
+            </i>
+        </button>
+
+        <button class="a__btn-play mat-elevation-z3" mat-fab>
+            <i *ngIf="player && !player.playing()" (click)="audioPlayerService.startPlaying();" class="material-icons"
+                title="Play">
+                play_arrow
+            </i>
+            <i *ngIf="player && player.playing()" (click)="audioPlayerService.pausePlaying();" class="material-icons"
+                title="Pause">
+                pause
+            </i>
+        </button>
+
+        <button class="a__btn-forward mat-elevation-z3" (click)="seekPlayer(audioPlayedDuration + 5)" mat-mini-fab>
+            <i class="material-icons" title="Forward">
+                fast_forward
+            </i>
+        </button>
+        <button [disabled]='!enableNext' *ngIf="playListVisible"
+            class="a__btn-replay  mat-elevation-z3" (click)="playNext()" mat-mini-fab>
+            <i class="material-icons" title="Next">
+                skip_next
+            </i>
+        </button>
+        <button class="a__btn-replay  mat-elevation-z3" (click)="seekPlayer(0)" mat-mini-fab>
+            <i class="material-icons" title="Replay">
+                replay
+            </i>
+        </button>
+
+
+    </div>
+
+    <mat-slider class="a__slider" [max]="player.duration()" (change)="seekPlayer(audioPlayedDuration)"
+        [(ngModel)]="audioPlayedDuration" name="duration" [step]="1" *ngIf="player"></mat-slider>
+
+    <div class="a__timer"> {{ playerTimer }} </div>
+
+    <div class="a_name"> {{agentname || ''}} </div>
+    <button class="a__btn-playlist  mat-elevation-z3" (click)="displayPlaylist()" *ngIf="playListVisible" mat-mini-fab>
+        <i class="material-icons" title="PlayList">
+            playlist_play
+        </i>
+    </button>
+
+    <button  (click)="onEvaluate()"
+        [disabled]="!(callInfo && callInfo?.isEvaluationEditor) || disableEvaluate || (callInfo && callInfo?.evaluationStatus === 'submitted') || !audioPlayerService.is_Evaluate"
+        mat-stroked-button type="submit" class="a_btn-evaluate"> Evaluate </button>
+
+</mat-card>
+<div class="p__bar" *ngIf="displayPlaylistPopup"  >
+    <div class="playlist_list" *ngFor="let audio of audioPlayerService.audios; let i = index"
+        (click)="loadAudioFromPlaylist($event.srcElement.innerHTML,i)">
+        {{audio.name}}
+    </div>
+</div>

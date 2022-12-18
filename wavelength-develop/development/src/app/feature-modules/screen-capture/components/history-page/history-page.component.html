@@ -1,0 +1,106 @@
+<div *ngIf="showPage" class="s__container">
+  <div>
+    <mat-card class="s__container">
+      <!--
+      <div class="s__filters">
+        <div class="s__filter-item">
+          <ng-select class="inputTypeSelect" [items]="lstWorkstations" bindLabel="name" bindValue="name"
+            placeholder="Select Workstation"
+            [(ngModel)]="objRecordingSearchCriteria && objRecordingSearchCriteria.workstation">
+          </ng-select>
+        </div>
+        <div class="s__filter-item">
+          <ng-select class="inputTypeSelect" [items]="objlstAgents" bindLabel="employee_name" bindValue="eid"
+            placeholder="Select Employee"
+            [(ngModel)]="objRecordingSearchCriteria && objRecordingSearchCriteria.employee">
+          </ng-select>
+        </div>
+        <div class="s__filter-item">
+          <input type="text" class="inputTypeTxt" placeholder="Phone Number"
+            [(ngModel)]="objRecordingSearchCriteria && objRecordingSearchCriteria.phoneNumber" />
+        </div>
+        <div class="s__filter-item">
+          <input type="text" class="inputTypeTxt" placeholder="Customer"
+            [(ngModel)]="objRecordingSearchCriteria && objRecordingSearchCriteria.customer" />
+        </div>
+        <div class="s__filter-item">
+          <input type="number" min="0" class="inputTypeTxt" placeholder="Min Duration (In Sec)"
+            [(ngModel)]="objRecordingSearchCriteria && objRecordingSearchCriteria.min_duration" />
+        </div>
+        <div class="s__filter-item">
+          <input type="number" min="0" class="inputTypeTxt" placeholder="Max Duration (In Sec)"
+            [(ngModel)]="objRecordingSearchCriteria && objRecordingSearchCriteria.max_duration" />
+        </div>
+        <div class="s__filter-item">
+          <input type="number" min="0" class="inputTypeTxt" placeholder="Max Duration (In Sec)"
+            [(ngModel)]="objRecordingSearchCriteria && objRecordingSearchCriteria.max_duration" />
+        </div>
+        <div class="s__filter-btn">
+          <button [disabled]="isSearchButtonDisable()" (click)="OnSearch()" type="submit" class="btn--blue"
+            mat-raised-button>Search</button>
+        </div>
+        -->
+      <div class="s__table">
+        <ngx-datatable class="material" [rows]="objlstRecording" [columnMode]="'force'"
+          [messages]="getEmptyTableMessage()" [headerHeight]="50" [footerHeight]="40" [rowHeight]="'auto'"
+          [externalPaging]="false" [offset]="pageOffsetValue" [count]="totalCount" (page)='onPageChange($event)'
+          (sort)="onTableSort($event)" [limit]="varRowLimit" [loadingIndicator]="tableLoadingIndicator">
+          <ngx-datatable-column prop="workstation" name="S.No">
+              <ng-template let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+                {{ rowIndex + 1 }}
+              </ng-template>
+            </ngx-datatable-column>
+          <ngx-datatable-column prop="workstation" name="Workstation">
+            <ng-template let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+              {{ value }}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column prop="startedAt" name="Min Date">
+            <ng-template let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+              {{ value }}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column prop="endedAt" name="Max Date">
+            <ng-template let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+              {{ value }}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column prop="employee" name="Employee">
+            <ng-template let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+              {{ value }}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column prop="client" name="Client Name">
+            <ng-template let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+              {{ value }}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column prop="site" name="Site">
+            <ng-template let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+              {{ value }}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column prop="phoneNumber" name="Phone Number">
+            <ng-template let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+              {{ value }}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column prop="duration" name="Duration(in sec)">
+            <ng-template let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+              {{ value }}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column [sortable]="false" prop="url" name="Actions">
+            <ng-template let-rowIndex="rowIndex" let-value="value" ngx-datatable-cell-template>
+              <i (click)="OnViewRecording(value)" class="material-icons s__actions" title="Play">
+                play_arrow
+              </i>
+            </ng-template>
+          </ngx-datatable-column>
+        </ngx-datatable>
+        <button type="button" class="btn btn-default pull-right" (click)="OnLoadMore()"
+          *ngIf="totalnoofrecordings>500 && noofrecordingsdisplayed<=totalnoofrecordings">Load More</button>
+      </div>
+    </mat-card>
+  </div>
+</div>

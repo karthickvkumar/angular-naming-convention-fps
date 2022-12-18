@@ -1,0 +1,12 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">{{title}}</h4>
+  </div>
+  <div class="modal-body" style="max-height:810px;">
+    <video width="800" controls autoplay style="width:100%">
+      <source src="{{mediasource}}" type="video/mp4">
+      <source src="{{mediasource}}" type="video/ogg"> Your browser does not support HTML5 video.
+    </video>
+  </div>
+  <div class="modal-footer">
+    <button mat-raised-button (click)="onClose()" class="btn--alt">Close</button>
+  </div>

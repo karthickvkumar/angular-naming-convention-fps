@@ -1,0 +1,14 @@
+<section class="w__content">
+    <mat-card class="mat-card">
+        <h3 class="mat-headline">Settings</h3>
+        <div class="set__container">
+            <div class="set__sidebar">
+                <div class="set__sidebar-item" (click)="onNavigate('assignrole')" [ngClass]="{'active': activePage === 'assignrole'}"> Users </div>
+                <div class="set__sidebar-item" (click)="onNavigate('assignpermissions')" [ngClass]="{'active': activePage === 'assignpermissions'}"> Roles and Permissions </div>
+            </div>
+            <div class="set__main">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </mat-card>
+</section>

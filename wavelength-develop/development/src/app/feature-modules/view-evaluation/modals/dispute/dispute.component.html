@@ -1,0 +1,33 @@
+<!-- <div>
+  <p>Kindly press the dispute button to compelete the dispute process</p>
+  <mat-form-field class="example-full-width">
+    <textarea required matInput [(ngModel)]="comment" placeholder="Leave a comment"></textarea>
+    <mat-hint>Comment is mandatory.</mat-hint>
+  </mat-form-field>
+
+  <button (click)="onCancel()" mat-raised-button>Cancel</button>
+  <button [hidden]="!appState.isOperationAvailable('dispute')" [disabled]="!comment || comment?.trim().length < 1"
+    (click)="onAcknowledge('dispute')" mat-raised-button class="btn--red">Dispute</button>
+</div> -->
+
+<div>
+    <div class="sub_cont">
+        <div class="icon"></div>
+        <div class="icon_heading">
+          <h4>Disputed</h4>
+        </div>
+      </div>
+      <div class="right-sec">
+  <p>Kindly press the dispute button to compelete the dispute process</p>
+  <mat-form-field class="example-full-width">
+    <textarea required matInput [(ngModel)]="comment" placeholder="Leave a comment"></textarea>
+    <mat-hint>Comment is mandatory.</mat-hint>
+  </mat-form-field>
+
+  <button (click)="onCancel()" mat-raised-button>Cancel</button>
+  <button [hidden]="!appState.isOperationAvailable('dispute')" [disabled]="!comment || comment?.trim().length < 1"
+    (click)="onAcknowledge('evaluation')" mat-raised-button class="btn--red">Dispute</button>
+    
+  </div>
+  <div class="clear"></div>
+</div>

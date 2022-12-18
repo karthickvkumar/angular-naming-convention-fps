@@ -1,0 +1,30 @@
+.background {
+    background-color: #EEEEEE;
+    min-height: 100vh;
+}
+
+.loader {
+    z-index: 1000;
+    width: 50%;
+    height: 100px;
+    position: absolute;
+    top: 40%;
+    left: 25%;
+    padding: 20px;
+}
+
+.loader_contents {
+    position: relative;
+    top: 20px;
+    text-align: center;
+    height: 20px;
+}
+
+.spinner {
+    left: 45%;
+    margin-top: 10px;
+}
+
+mat-sidenav {
+    width: 600px;
+}

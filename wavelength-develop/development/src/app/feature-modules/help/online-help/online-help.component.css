@@ -1,0 +1,9 @@
+.um__wrapper {
+    padding-top: 60px;
+}
+
+::ng-deep .um__wrapper iframe {
+    border: 0;
+    min-width: 100vw;
+    min-height: 88vh;
+}

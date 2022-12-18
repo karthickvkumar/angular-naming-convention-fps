@@ -1,0 +1,78 @@
+.sidemenu {
+    width: 60px;
+    height:auto;
+    position: fixed;
+    top:40%;
+    left:0px;
+}
+
+mat-card {
+    padding: 0;
+    margin: 0;
+}
+
+.menu {
+    height: 60px;
+    width: 60px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    text-align: center;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    text-decoration: none;
+}
+
+.menulink {
+    color: black;
+}
+
+.menuactivelink {
+    color: white;
+}
+
+
+
+.menuactive {
+    height: 60px;
+    width: 60px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    text-align: center;
+    background-color:#3c8dbc;
+    color: white;
+  
+    cursor: pointer;
+}
+
+.menutextactive {
+    font-size: 8px;
+    margin-top: 10px;
+    color: white;
+}
+
+.menutext {
+    font-size: 8px;
+    margin-top: 10px;
+    color: black;
+   
+}
+
+.scorevalue {
+    height: 55px;
+    width: 100%;
+    padding-top: 40px;
+    font-size: 80px;
+    color: limegreen;
+    text-align: center;
+}
+
+.scorelabel {
+    padding: 10px;
+    font-size: 8px;
+    text-align: center;
+    text-overflow: ellipsis;
+    height: 50px;
+    line-height: normal;
+}
+

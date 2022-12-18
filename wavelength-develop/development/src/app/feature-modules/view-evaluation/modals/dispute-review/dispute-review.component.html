@@ -1,0 +1,82 @@
+<!-- <div>
+  <h2>
+    Disputed
+  </h2>
+  <div class="w__comment-content">
+    <div class="w__comment-title">
+      <label for="" class="comment-red">{{ agentName }}</label>
+      <label for="" class="comment-grey"></label>
+      <label class="w__comment-time">{{ commentStartTime | amDateFormat: 'YYYY-MM-DD hh:mm:ss A' }}</label>
+    </div>
+    <div class="w__comment-text">
+      {{ commentText }}
+    </div>
+  </div>
+</div> -->
+
+
+<!-- <div>
+  <h2>Review Dispute</h2>
+  <p>Do you wish to accept the dispute raised on this evaluation?</p>
+  <mat-form-field class="example-full-width">
+    <textarea required matInput [(ngModel)]="comment" placeholder="Leave a comment"></textarea>
+    <mat-hint>Comment is mandatory.</mat-hint>
+  </mat-form-field>
+  <br> -->
+  <!-- <button (click)="onCancel()" mat-raised-button>Cancel</button> -->
+  <!-- <button [disabled]="!comment || comment?.trim().length < 1" (click)="onAcknowledge('reject')" mat-raised-button
+    class="btn--red" [mat-dialog-close]="false">Reject</button>
+  <button [disabled]="!comment || comment?.trim().length < 1" (click)="onAcknowledge('accept')" mat-raised-button
+    class="btn--blue" [mat-dialog-close]="true">Accept</button>
+</div> -->
+
+
+<div>
+  <div class="main">
+    <div class="sub_cont">
+        <div class="icon"></div>
+        <div class="icon_heading">
+          <h4>Disputed</h4>
+        </div>      
+    </div>   
+    <div class="right-sec">
+        <div class="w__comment-title">
+            <label for="" class="comment-red">{{ agentName }}</label>
+        </div>
+  <div class="w__comment-content">
+    <!-- <div class="w__comment-title">
+      <label for="" class="comment-red">{{ agentName }}</label> -->
+      <label for="" class="comment-grey"></label>
+      <label class="w__comment-time">{{ commentStartTime | amDateFormat: 'YYYY-MM-DD hh:mm:ss A' }}</label>
+    <!-- </div> -->
+    <div class="w__comment-text">
+      {{ commentText }}
+    </div>
+  </div>
+  </div>
+  <div class="clear"></div>
+  </div>
+</div>
+
+
+<div>
+  <div class="sub_cont">
+    <div class="icon"></div>
+    <div class="icon_heading">
+      <h4>Review Dispute</h4>
+    </div>      
+</div>
+<div class="right-sec">
+  <p>Do you wish to accept the dispute raised on this evaluation?</p>
+  <mat-form-field class="example-full-width">
+    <textarea required matInput [(ngModel)]="comment" placeholder="Leave a comment"></textarea>
+    <mat-hint>Comment is mandatory.</mat-hint>
+  </mat-form-field>
+  <br>
+  <!-- <button (click)="onCancel()" mat-raised-button>Cancel</button> -->
+  <button [disabled]="!comment || comment?.trim().length < 1" (click)="onAcknowledge('reject')" mat-raised-button
+    class="btn--red" [mat-dialog-close]="false">Reject</button>
+  <button [disabled]="!comment || comment?.trim().length < 1" (click)="onAcknowledge('accept')" mat-raised-button
+    class="btn--blue" [mat-dialog-close]="true">Accept</button>
+</div>
+</div>

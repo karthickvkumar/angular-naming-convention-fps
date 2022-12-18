@@ -1,0 +1,162 @@
+.w__comment {
+    padding: 15px 10px;
+    margin: 15px 0;
+    border-radius: 3px;
+  }
+  
+  .w__comment-heading {
+    line-height: normal;
+    font-weight: 500;
+    font-size: 18px;
+  }
+
+  .w__comment-heading .material-icons {
+    float: right; 
+    cursor: pointer;
+  }
+
+  .w__comment-title {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .w__comment-img {
+    display: inline-block;
+    margin-left: 15px;
+  }
+  
+  .w__comment-text {
+    line-height: normal;
+    font-size: 0.875rem;
+    
+    max-height: 80vh;
+    padding-right: 20px;
+
+    word-break: break-word;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
+  .w__comment-time {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    font-size: 0.625rem;
+    color: #999999;
+    margin-top: 5px;
+    margin-right: 25px;
+    padding-left: 15px;
+  }
+  
+  .w__comment-content {
+    background-color: #ededed;
+    padding: 15px 10px;
+    border-radius: 3px;
+    /* margin-top: 10px; */
+  }
+  
+  .w__comment-show {
+    background-color: #F0F0F0;
+    padding: 10px 0;
+    margin: 5px 0;
+    border-radius: 3px;
+  }
+  
+  .w__comment-input {
+    margin-right: 30px;
+  }
+  
+  .w__comment-input textarea {
+    width: 100%;
+    min-height: 75px;
+    font-size: 0.875rem;
+    padding: 15px 10px;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    overflow-x: hidden;
+    resize: vertical;
+  }
+  
+  .w__comment-button {
+    margin-right: 30px;
+    margin-bottom: 25px;
+  }
+  
+  .w__comment-add {
+    margin-top: 25px;
+  }
+  
+  
+  .comment-red {
+    color: #F15757;
+  }
+  
+  .comment-grey {
+    color: #999999;
+  }
+
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.btn--blue {
+    margin-left: 10px;
+}
+.icon{
+  border: solid 4px #F52C2C;
+  width: 18px;
+  height: 18px;
+  border-radius: 100%;
+  background: #fff;
+}
+.main{
+    position: relative;
+}
+ .main:before {
+  content: "";
+    width: 2px;
+    height: 129px;
+    background-color: #E0E0E0;
+    position: absolute;
+    top: 32px;
+    left: 8px;
+} 
+.sub_cont {
+    display: flex;
+    align-items: center;
+}
+.sub_head {
+    margin-left: 32px;
+    margin-top: 5px;
+}
+.icon_heading {
+    margin-left: 16px;
+    margin-top: 11px;
+}
+.icon_heading h4 {
+    font-size: 18px;
+}
+h6.sub_date {
+    float: right;
+    margin-top: -17px;
+    margin-right: 15px;
+    font-size: 12px;
+}
+.right-sec {
+    float: right;
+    width: 93%;
+}
+.sub_date {
+    float: right;
+    /* margin-top: -17px;
+    margin-right: 15px;
+    font-size: 12px; */
+}
+.clear{
+    clear: both;
+}
